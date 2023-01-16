@@ -3,7 +3,7 @@
 }
 
 .App-logo {
-  height: 40vmin;
+  height: 20vmin;
   pointer-events: none;
 }
 
@@ -15,7 +15,7 @@
 
 .App-header {
   background-color: #282c34;
-  min-height: 100vh;
+  min-height: 50vmin;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -24,16 +24,31 @@
   color: white;
 }
 
+.topAndMenu {
+  background-color: #111111;
+}
+
 .lineOne {
+  min-height: 20vmin;
   display: grid; 
   grid-template-columns: repeat(3, 1fr);
-
 }
 
 .lineTwo {
+  min-height: 20vmin;
   display: grid; 
-  grid-template-columns: repeat(4, 1fr);
+}
 
+.lineThree {
+  min-height: 20vmin;
+  display: grid; 
+}
+
+.lineFour {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-content: center;
+  justify-content: normal;
 }
 
 .App-link {
