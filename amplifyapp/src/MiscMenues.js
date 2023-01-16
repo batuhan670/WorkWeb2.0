@@ -7,16 +7,15 @@ class MiscMenues extends React.Component {
         return <div className="lineFour">
             <Link to={`/addressbuch`}>Adressbuch</Link>
             <Link to={`/pwaendern`}>Passwort ändern</Link>
-            <Link to={`/urlaubsantrag`}>Urlaub</Link>
+            <Link to={`/urlaub`}>Urlaub</Link>
             <Link to={`/addressbuch`}>Adressbuch</Link>
             <Link to={`/pwaendern`}>Passwort ändern</Link>
-            <Link to={`/urlaubsantrag`}>Urlaub</Link>
+            <Link to={`/urlaub`}>Urlaub</Link>
             <Link to={`/addressbuch`}>Adressbuch</Link>
             <Link to={`/pwaendern`}>Passwort ändern</Link>
-            <Link to={`/urlaubsantrag`}>Urlaub</Link>
+            <Link to={`/urlaub`}>Urlaub</Link>
             </div>;
     }
 }
-
 
 export default MiscMenues

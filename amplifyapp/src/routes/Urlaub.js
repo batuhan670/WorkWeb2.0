@@ -1,11 +1,12 @@
 import React from 'react'
-
-const Urlaubsantrag = () => {
+import { Link } from "react-router-dom";
+const Urlaub = () => {
   return (
     <div>
-      Urlaubsantrag
+      <p>Urlaubsantrag</p>
+      <div><Link to={`/`}>Back to home</Link></div>
     </div>
   )
 }
 
-export default Urlaubsantrag
+export default Urlaub
