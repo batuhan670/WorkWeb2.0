@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 const Urlaub = () => {
   return (
     <div>
-      <p>Urlaubsantrag</p>
-      <div><Link to={`/`}>Back to home</Link></div>
+        <p>Passwort ändern</p>
+       <div><Link to={`/`}>Back to home</Link></div>
     </div>
   )
 }

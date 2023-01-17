@@ -9,10 +9,14 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import Adressbuch from './routes/Adressbuch.js'
+import PWaendern from './routes/PWaendern';
+import Urlaub from './routes/Urlaub';
 
 const router = createBrowserRouter([
   { path: "/", element: <App />, },
   { path: "/addressbuch", element: <Adressbuch />, },
+  { path: "/pwaendern", element: <PWaendern />, },
+  { path: "/urlaub", element: <Urlaub />, },
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
