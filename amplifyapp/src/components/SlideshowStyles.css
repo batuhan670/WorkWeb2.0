@@ -1,0 +1,14 @@
+.carousel-root {
+    background-color: green;
+    min-height: 20px;
+    overflow: visible;
+}
+
+.control-arrow {
+    width: 100px;
+}
+
+.slideImg img {
+    height: 50%;
+    width: 50%;
+}

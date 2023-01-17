@@ -1,6 +1,11 @@
-import logo from './logo.svg';
 import './App.css';
-import MiscMenues from './MiscMenues.js'
+import "./components/NewsIconLeft.js";
+import "./components/NewsIconRight.js";
+import logo from './logo.svg';
+import MiscMenues from './MiscMenues.js';
+import React from "react";
+import Slideshow from './components/Slideshow.js';
+import Schichtplan from './components/Schichtplan';
 
 function App() {
   return (
@@ -21,19 +26,17 @@ function App() {
           </div>
           <div>
             Instandhaltung
-          </div>
-        </div>
-        <div className="lineTwo">
-          News
-        </div>
+          </div></div>
+        <Slideshow />
         <div className="lineThree">
           Schichtplan
         </div>
-          <MiscMenues />
-        <p><code>Work Web 2.0</code></p>
-        <a className="App-link" href="https://reactjs.org"
-          target="_blank" rel="noopener noreferrer">
-          Comming soon</a>
+        <MiscMenues />
+        <div className='lastLine'>
+          <p><code>Work Web 2.0</code></p>
+          <a className="App-link" href="https://reactjs.org"
+            target="_blank" rel="noopener noreferrer">
+            Comming soon</a></div>
       </header >
     </div >
   );
