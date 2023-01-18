@@ -29,22 +29,23 @@
 
 .lineOne {
   min-height: 20vmin;
-  display: grid; 
+  display: grid;
   grid-template-columns: repeat(3, 1fr);
   background-color: #222;
 }
 
 .lineTwo {
   min-height: 20vmin;
-  display: grid; 
+  display: grid;
   grid-template-columns: 15% 70% 15%;
   background-color: #333;
-  
+
 }
 
-.lineThree {
+.schichtplan {
   min-height: 20vmin;
-  display: grid; 
+  display: grid;
+  grid-template-columns:  repeat(7, 1fr);
   background-color: #444;
 }
 
@@ -56,7 +57,7 @@
   background-color: #555;
 }
 
-.lastLine{
+.lastLine {
   background-color: #666;
 }
 
@@ -68,6 +69,7 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }

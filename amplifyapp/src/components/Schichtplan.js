@@ -1,22 +1,24 @@
-import React from 'react';
+import React from "react";
 
-const Woche = [
-    <div>4:00-12:00</div>,
-    <div>4:00-12:00</div>,
-    <div>4:00-12:00</div>,
-    <div>4:00-12:00</div>,
-    <div>4:00-12:00</div>,
-    <div>Frei</div>,
-    <div>Frei</div>
+const woche = [
+    "Mo", "Di", "Mi", "Do", "Fr", "Sa", "So"
 ];
-/*
-class Schichtplan extends Component {
-  render() {
+
+const arbeitsstunden = [
+    "04:00-12:00", "04:00-12:00", "04:00-12:00", "04:00-12:00", "04:00-12:00", "Frei", "Frei"
+];
+
+function tage(element) {
+    return <div>{element}</div>
+};
+
+function Schichtplan() {
     return (
-        {Woche}
-        );
-    }
+        <div className="schichtplan">
+            {woche.map(tage)}
+            {arbeitsstunden.map(tage)}
+        </div>
+    );
 };
 
 export default Schichtplan;
-*/

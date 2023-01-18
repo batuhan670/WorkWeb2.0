@@ -28,9 +28,7 @@ function App() {
             Instandhaltung
           </div></div>
         <Slideshow />
-        <div className="lineThree">
-          Schichtplan
-        </div>
+        <Schichtplan />
         <MiscMenues />
         <div className='lastLine'>
           <p><code>Work Web 2.0</code></p>
