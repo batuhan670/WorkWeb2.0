@@ -12,6 +12,10 @@ import Adressbuch from './routes/Adressbuch.js'
 import PWaendern from './routes/PWaendern';
 import Urlaub from './routes/Urlaub';
 
+/*
+Fuer eventuelle Sprachspezifikation
+const lang = navigator.language;
+*/
 const router = createBrowserRouter([
   { path: "/", element: <App />, },
   { path: "/addressbuch", element: <Adressbuch />, },

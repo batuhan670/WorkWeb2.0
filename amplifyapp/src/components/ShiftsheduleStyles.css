@@ -1,0 +1,30 @@
+#shiftshedule {
+    min-height: 100px;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    color: black;
+    background-color: #444;
+}
+
+#currentDay {
+    border: 10px;
+    border-radius: 5px;
+    background-color: #1c1;
+}
+
+.day {
+    min-height: 40px;
+}
+
+.dayName {
+    border-width: 12px;
+    border-radius: 5px;
+    border-color: #111;
+}
+
+.dayHours {
+    margin: auto;
+    border-width: 12px;
+    border-radius: 5px;
+    border-color: #111;
+}

@@ -5,7 +5,7 @@ import logo from './logo.svg';
 import MiscMenues from './MiscMenues.js';
 import React from "react";
 import Slideshow from './components/Slideshow.js';
-import Schichtplan from './components/Schichtplan';
+import Shiftshedule from './components/Shiftshedule.js';
 
 function App() {
   return (
@@ -28,7 +28,7 @@ function App() {
             Instandhaltung
           </div></div>
         <Slideshow />
-        <Schichtplan />
+        <Shiftshedule />
         <MiscMenues />
         <div className='lastLine'>
           <p><code>Work Web 2.0</code></p>
