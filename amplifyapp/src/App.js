@@ -5,7 +5,7 @@ import logo from './logo.svg';
 import MiscMenues from './MiscMenues.js';
 import React from "react";
 import Slideshow from './components/Slideshow.js';
-import Schichtplan from './components/Schichtplan';
+import Shiftshedule from './components/Shiftshedule.js';
 import DoctorsNote from './routes/DoctorsNote.js';
 
 function App() {
@@ -29,7 +29,7 @@ function App() {
             Instandhaltung
           </div></div>
         <Slideshow />
-        <Schichtplan />
+        <Shiftshedule />
         <MiscMenues />
         <a href='./DoctorsNote'>Krankmeldung</a>
         <div className='lastLine'>

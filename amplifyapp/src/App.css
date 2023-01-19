@@ -42,13 +42,6 @@
 
 }
 
-.schichtplan {
-  min-height: 20vmin;
-  display: grid;
-  grid-template-columns:  repeat(7, 1fr);
-  background-color: #444;
-}
-
 .miscMenu {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
