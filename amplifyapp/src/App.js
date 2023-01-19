@@ -4,17 +4,17 @@ import "./components/NewsIconRight.js";
 import logo from './logo.svg';
 import MiscMenues from './MiscMenues.js';
 import React from "react";
+import Topline from "./components/Topline.js"
 import Slideshow from './components/Slideshow.js';
 import Shiftshedule from './components/Shiftshedule.js';
 import DoctorsNote from './routes/DoctorsNote.js';
+
 
 function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <div className="topAndMenu">
-          Name der Abteilung
-        </div>
+        <Topline />
         <img src={logo} className="App-logo" alt="logo" />
         <div className="lineOne">
           <div>

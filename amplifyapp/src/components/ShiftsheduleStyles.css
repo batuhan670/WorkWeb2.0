@@ -1,29 +1,47 @@
 #shiftshedule {
     min-height: 100px;
+
     display: grid;
     grid-template-columns: repeat(7, 1fr);
-    color: black;
-    background-color: #444;
+    color: var(--textColor);
+
+    background-color: var(--compColor);
 }
 
 #currentDay {
-    border: 10px;
-    border-radius: 5px;
     background-color: #1c1;
+    color: red;
 }
 
 .day {
-    min-height: 40px;
+    margin: 2%;
+
+    border-style: solid;
+    border-radius: 5px;
+    border-width: 1%;
+    border-color: var(--dayColor);
+
+    background-color: var(--dayColor);
 }
 
 .dayName {
-    border-width: 12px;
+    margin: 2%;
+
+    border-style: solid;
     border-radius: 5px;
-    border-color: #111;
+    border-width: 1%;
+    border-color: #ddd;
+
+    color: var(--textColor);
+
+    font-size: 1.5ch;
 }
 
 .dayHours {
+    font-size: 1em;
+
     margin: auto;
+
     border-width: 12px;
     border-radius: 5px;
     border-color: #111;

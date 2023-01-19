@@ -11,19 +11,8 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
-nwsBtn {
-border: 1px solid #e500e5;
-background: #fff;
-color:aqua;
-}
-
-nwsBtn-light {
-background: transparent;
-color:#00bfbf;
-}
-
-btn:hover{
-  background: #1020f0;
-  color: #000;
-  transition: 0,3s;
+:root {
+  --textColor: #000;
+  --compColor: #444;
+  --backGroundcolor: #fff;
 }

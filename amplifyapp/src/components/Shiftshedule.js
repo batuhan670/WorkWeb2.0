@@ -4,39 +4,37 @@ import "./ShiftsheduleStyles.css";
 
 //Benennung Wochentage
 const Weekdays = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
-function getDayName(element) {
-    return <div className="dayName">{element}</div>
-};
-
 
 //Arbeitsstunden
-const WorkingHoursPerDay = [
-    "04:00-12:00", "04:00-12:00", "04:00-12:00", "04:00-12:00", "04:00-12:00", "Frei", "Frei"
-];
-function getWorkingHours(element) {
-    return <div className="dayHours">{element}</div>
-};
+const WorkHoursStart = ["04:00-", "04:00-", "04:00-", "04:00-", "04:00-", "Frei", "Frei"];
+const WorkHoursEnd = ["12:00", "12:00", "12:00", "12:00", "12:00", "", ""];
 
 //DivElement fuer jeden Tag.
-function getDay(dayName, dayWorkingHours, number) {
+function getDay(dayName, shiftStart, shiftEnd, number) {
     return <div className="day">
-        {getDayName(dayName[number])}
-        {getWorkingHours(dayWorkingHours[number])}
+        <div className="dayName">{dayName[number]}</div>
+        <div className="dayHours">{shiftStart[number]}</div>
+        <div className="dayHours">{shiftEnd[number]}</div>
     </div>
 };
 
-function shiftshedule() {
+function Shiftshedule() {
+    function changeColor(color) {
+        var r = document.querySelector(':root');
+        r.style.setProperty('--textColor', color);
+    }
+
     return (
         <div id="shiftshedule">
-            {getDay(Weekdays, WorkingHoursPerDay, 0)}
-            {getDay(Weekdays, WorkingHoursPerDay, 1)}
-            {getDay(Weekdays, WorkingHoursPerDay, 2)}
-            {getDay(Weekdays, WorkingHoursPerDay, 3)}
-            {getDay(Weekdays, WorkingHoursPerDay, 4)}
-            {getDay(Weekdays, WorkingHoursPerDay, 5)}
-            {getDay(Weekdays, WorkingHoursPerDay, 6)}
+            <button onClick={() => changeColor("green")}>Green</button>
+            <button onClick={() => changeColor("brown")}>Munggilebru</button>
+            {getDay(Weekdays, WorkHoursStart, WorkHoursEnd, 2)}
+            {getDay(Weekdays, WorkHoursStart, WorkHoursEnd, 3)}
+            {getDay(Weekdays, WorkHoursStart, WorkHoursEnd, 4)}
+            {getDay(Weekdays, WorkHoursStart, WorkHoursEnd, 5)}
+            {getDay(Weekdays, WorkHoursStart, WorkHoursEnd, 6)}
         </div>
     );
 };
 
-export default shiftshedule;
+export default Shiftshedule;

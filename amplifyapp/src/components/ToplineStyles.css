@@ -1,0 +1,20 @@
+#Topline {
+    min-height: 50px;
+    display: grid;
+    grid-template-columns: auto;
+    background-color: var(--backGroundcolor);
+    color: var(--textColor);
+}
+
+#Abteilungsname {
+    margin-top: 1%;
+    margin-right: 1%;
+    position: static;
+    z-index: 1;
+}
+
+#Menu {
+    margin: 1%;
+    border: solid 10px #000;
+    border-radius: 5px;
+}
