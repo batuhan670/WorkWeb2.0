@@ -6,6 +6,7 @@ import MiscMenues from './MiscMenues.js';
 import React from "react";
 import Slideshow from './components/Slideshow.js';
 import Schichtplan from './components/Schichtplan';
+import DoctorsNote from './routes/DoctorsNote.js';
 
 function App() {
   return (
@@ -30,6 +31,7 @@ function App() {
         <Slideshow />
         <Schichtplan />
         <MiscMenues />
+        <link to = ""></link>>
         <div className='lastLine'>
           <p><code>Work Web 2.0</code></p>
           <a className="App-link" href="https://reactjs.org"
