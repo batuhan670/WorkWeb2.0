@@ -31,7 +31,7 @@ function App() {
         <Slideshow />
         <Schichtplan />
         <MiscMenues />
-        <link to = ""></link>>
+        <a href='./DoctorsNote'>Krankmeldung</a>
         <div className='lastLine'>
           <p><code>Work Web 2.0</code></p>
           <a className="App-link" href="https://reactjs.org"
