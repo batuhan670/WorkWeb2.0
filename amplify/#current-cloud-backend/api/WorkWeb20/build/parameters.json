@@ -1,0 +1,13 @@
+{
+    "AppSyncApiName": "WorkWeb20",
+    "DynamoDBBillingMode": "PAY_PER_REQUEST",
+    "DynamoDBEnableServerSideEncryption": false,
+    "authRoleName": {
+        "Ref": "AuthRoleName"
+    },
+    "unauthRoleName": {
+        "Ref": "UnauthRoleName"
+    },
+    "S3DeploymentBucket": "amplify-amplifyfe10acd258224-staging-90546-deployment",
+    "S3DeploymentRootKey": "amplify-appsync-files/c4bfed7aec1d2bc8acc8ff8f07b907d8d960a6eb"
+}

@@ -1,0 +1,484 @@
+
+type Urlaub @aws_iam @aws_api_key {
+  id: ID!
+  Urlaub: Float
+  Zeitausgleich: Float
+  Arbeitszeiten: Float
+  Mitarbeiters(filter: ModelUrlaubMitarbeiterFilterInput, sortDirection: ModelSortDirection, limit: Int, nextToken: String): ModelUrlaubMitarbeiterConnection
+  Stunden: Float
+  createdAt: AWSDateTime!
+  updatedAt: AWSDateTime!
+  _version: Int!
+  _deleted: Boolean
+  _lastChangedAt: AWSTimestamp!
+}
+
+type Abteilung @aws_iam @aws_api_key {
+  id: ID!
+  Bereich: String
+  Teatigkeit: String
+  Mitarbeiters(filter: ModelMitarbeiterFilterInput, sortDirection: ModelSortDirection, limit: Int, nextToken: String): ModelMitarbeiterConnection
+  createdAt: AWSDateTime!
+  updatedAt: AWSDateTime!
+  _version: Int!
+  _deleted: Boolean
+  _lastChangedAt: AWSTimestamp!
+}
+
+type Mitarbeiter @aws_iam @aws_api_key {
+  id: ID!
+  Name: String
+  Abteilung: String
+  Telefon: Int
+  Teatigkeit: String
+  Vorgesetzter: String
+  abteilungID: ID!
+  urlaubs(filter: ModelUrlaubMitarbeiterFilterInput, sortDirection: ModelSortDirection, limit: Int, nextToken: String): ModelUrlaubMitarbeiterConnection
+  createdAt: AWSDateTime!
+  updatedAt: AWSDateTime!
+  _version: Int!
+  _deleted: Boolean
+  _lastChangedAt: AWSTimestamp!
+}
+
+type UrlaubMitarbeiter @aws_iam @aws_api_key {
+  id: ID!
+  urlaubId: ID!
+  mitarbeiterId: ID!
+  urlaub: Urlaub!
+  mitarbeiter: Mitarbeiter!
+  createdAt: AWSDateTime!
+  updatedAt: AWSDateTime!
+  _version: Int!
+  _deleted: Boolean
+  _lastChangedAt: AWSTimestamp!
+}
+
+input ModelStringInput {
+  ne: String
+  eq: String
+  le: String
+  lt: String
+  ge: String
+  gt: String
+  contains: String
+  notContains: String
+  between: [String]
+  beginsWith: String
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+  size: ModelSizeInput
+}
+
+input ModelIntInput {
+  ne: Int
+  eq: Int
+  le: Int
+  lt: Int
+  ge: Int
+  gt: Int
+  between: [Int]
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+}
+
+input ModelFloatInput {
+  ne: Float
+  eq: Float
+  le: Float
+  lt: Float
+  ge: Float
+  gt: Float
+  between: [Float]
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+}
+
+input ModelBooleanInput {
+  ne: Boolean
+  eq: Boolean
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+}
+
+input ModelIDInput {
+  ne: ID
+  eq: ID
+  le: ID
+  lt: ID
+  ge: ID
+  gt: ID
+  contains: ID
+  notContains: ID
+  between: [ID]
+  beginsWith: ID
+  attributeExists: Boolean
+  attributeType: ModelAttributeTypes
+  size: ModelSizeInput
+}
+
+input ModelSubscriptionStringInput {
+  ne: String
+  eq: String
+  le: String
+  lt: String
+  ge: String
+  gt: String
+  contains: String
+  notContains: String
+  between: [String]
+  beginsWith: String
+  in: [String]
+  notIn: [String]
+}
+
+input ModelSubscriptionIntInput {
+  ne: Int
+  eq: Int
+  le: Int
+  lt: Int
+  ge: Int
+  gt: Int
+  between: [Int]
+  in: [Int]
+  notIn: [Int]
+}
+
+input ModelSubscriptionFloatInput {
+  ne: Float
+  eq: Float
+  le: Float
+  lt: Float
+  ge: Float
+  gt: Float
+  between: [Float]
+  in: [Float]
+  notIn: [Float]
+}
+
+input ModelSubscriptionBooleanInput {
+  ne: Boolean
+  eq: Boolean
+}
+
+input ModelSubscriptionIDInput {
+  ne: ID
+  eq: ID
+  le: ID
+  lt: ID
+  ge: ID
+  gt: ID
+  contains: ID
+  notContains: ID
+  between: [ID]
+  beginsWith: ID
+  in: [ID]
+  notIn: [ID]
+}
+
+enum ModelAttributeTypes {
+  binary
+  binarySet
+  bool
+  list
+  map
+  number
+  numberSet
+  string
+  stringSet
+  _null
+}
+
+input ModelSizeInput {
+  ne: Int
+  eq: Int
+  le: Int
+  lt: Int
+  ge: Int
+  gt: Int
+  between: [Int]
+}
+
+enum ModelSortDirection {
+  ASC
+  DESC
+}
+
+type ModelUrlaubConnection @aws_api_key @aws_iam {
+  items: [Urlaub]!
+  nextToken: String
+  startedAt: AWSTimestamp
+}
+
+input ModelUrlaubFilterInput {
+  id: ModelIDInput
+  Urlaub: ModelFloatInput
+  Zeitausgleich: ModelFloatInput
+  Arbeitszeiten: ModelFloatInput
+  Stunden: ModelFloatInput
+  and: [ModelUrlaubFilterInput]
+  or: [ModelUrlaubFilterInput]
+  not: ModelUrlaubFilterInput
+}
+
+type Query {
+  getUrlaub(id: ID!): Urlaub @aws_api_key @aws_iam
+  listUrlaubs(filter: ModelUrlaubFilterInput, limit: Int, nextToken: String): ModelUrlaubConnection @aws_api_key @aws_iam
+  syncUrlaubs(filter: ModelUrlaubFilterInput, limit: Int, nextToken: String, lastSync: AWSTimestamp): ModelUrlaubConnection @aws_api_key @aws_iam
+  getAbteilung(id: ID!): Abteilung @aws_api_key @aws_iam
+  listAbteilungs(filter: ModelAbteilungFilterInput, limit: Int, nextToken: String): ModelAbteilungConnection @aws_api_key @aws_iam
+  syncAbteilungs(filter: ModelAbteilungFilterInput, limit: Int, nextToken: String, lastSync: AWSTimestamp): ModelAbteilungConnection @aws_api_key @aws_iam
+  getMitarbeiter(id: ID!): Mitarbeiter @aws_api_key @aws_iam
+  listMitarbeiters(filter: ModelMitarbeiterFilterInput, limit: Int, nextToken: String): ModelMitarbeiterConnection @aws_api_key @aws_iam
+  syncMitarbeiters(filter: ModelMitarbeiterFilterInput, limit: Int, nextToken: String, lastSync: AWSTimestamp): ModelMitarbeiterConnection @aws_api_key @aws_iam
+  mitarbeitersByAbteilungID(abteilungID: ID!, sortDirection: ModelSortDirection, filter: ModelMitarbeiterFilterInput, limit: Int, nextToken: String): ModelMitarbeiterConnection @aws_api_key @aws_iam
+  getUrlaubMitarbeiter(id: ID!): UrlaubMitarbeiter @aws_api_key @aws_iam
+  listUrlaubMitarbeiters(filter: ModelUrlaubMitarbeiterFilterInput, limit: Int, nextToken: String): ModelUrlaubMitarbeiterConnection @aws_api_key @aws_iam
+  syncUrlaubMitarbeiters(filter: ModelUrlaubMitarbeiterFilterInput, limit: Int, nextToken: String, lastSync: AWSTimestamp): ModelUrlaubMitarbeiterConnection @aws_api_key @aws_iam
+  urlaubMitarbeitersByUrlaubId(urlaubId: ID!, sortDirection: ModelSortDirection, filter: ModelUrlaubMitarbeiterFilterInput, limit: Int, nextToken: String): ModelUrlaubMitarbeiterConnection @aws_api_key @aws_iam
+  urlaubMitarbeitersByMitarbeiterId(mitarbeiterId: ID!, sortDirection: ModelSortDirection, filter: ModelUrlaubMitarbeiterFilterInput, limit: Int, nextToken: String): ModelUrlaubMitarbeiterConnection @aws_api_key @aws_iam
+}
+
+input ModelUrlaubConditionInput {
+  Urlaub: ModelFloatInput
+  Zeitausgleich: ModelFloatInput
+  Arbeitszeiten: ModelFloatInput
+  Stunden: ModelFloatInput
+  and: [ModelUrlaubConditionInput]
+  or: [ModelUrlaubConditionInput]
+  not: ModelUrlaubConditionInput
+}
+
+input CreateUrlaubInput {
+  id: ID
+  Urlaub: Float
+  Zeitausgleich: Float
+  Arbeitszeiten: Float
+  Stunden: Float
+  _version: Int
+}
+
+input UpdateUrlaubInput {
+  id: ID!
+  Urlaub: Float
+  Zeitausgleich: Float
+  Arbeitszeiten: Float
+  Stunden: Float
+  _version: Int
+}
+
+input DeleteUrlaubInput {
+  id: ID!
+  _version: Int
+}
+
+type Mutation {
+  createUrlaub(input: CreateUrlaubInput!, condition: ModelUrlaubConditionInput): Urlaub @aws_api_key @aws_iam
+  updateUrlaub(input: UpdateUrlaubInput!, condition: ModelUrlaubConditionInput): Urlaub @aws_api_key @aws_iam
+  deleteUrlaub(input: DeleteUrlaubInput!, condition: ModelUrlaubConditionInput): Urlaub @aws_api_key @aws_iam
+  createAbteilung(input: CreateAbteilungInput!, condition: ModelAbteilungConditionInput): Abteilung @aws_api_key @aws_iam
+  updateAbteilung(input: UpdateAbteilungInput!, condition: ModelAbteilungConditionInput): Abteilung @aws_api_key @aws_iam
+  deleteAbteilung(input: DeleteAbteilungInput!, condition: ModelAbteilungConditionInput): Abteilung @aws_api_key @aws_iam
+  createMitarbeiter(input: CreateMitarbeiterInput!, condition: ModelMitarbeiterConditionInput): Mitarbeiter @aws_api_key @aws_iam
+  updateMitarbeiter(input: UpdateMitarbeiterInput!, condition: ModelMitarbeiterConditionInput): Mitarbeiter @aws_api_key @aws_iam
+  deleteMitarbeiter(input: DeleteMitarbeiterInput!, condition: ModelMitarbeiterConditionInput): Mitarbeiter @aws_api_key @aws_iam
+  createUrlaubMitarbeiter(input: CreateUrlaubMitarbeiterInput!, condition: ModelUrlaubMitarbeiterConditionInput): UrlaubMitarbeiter @aws_api_key @aws_iam
+  updateUrlaubMitarbeiter(input: UpdateUrlaubMitarbeiterInput!, condition: ModelUrlaubMitarbeiterConditionInput): UrlaubMitarbeiter @aws_api_key @aws_iam
+  deleteUrlaubMitarbeiter(input: DeleteUrlaubMitarbeiterInput!, condition: ModelUrlaubMitarbeiterConditionInput): UrlaubMitarbeiter @aws_api_key @aws_iam
+}
+
+input ModelSubscriptionUrlaubFilterInput {
+  id: ModelSubscriptionIDInput
+  Urlaub: ModelSubscriptionFloatInput
+  Zeitausgleich: ModelSubscriptionFloatInput
+  Arbeitszeiten: ModelSubscriptionFloatInput
+  Stunden: ModelSubscriptionFloatInput
+  and: [ModelSubscriptionUrlaubFilterInput]
+  or: [ModelSubscriptionUrlaubFilterInput]
+}
+
+type Subscription {
+  onCreateUrlaub(filter: ModelSubscriptionUrlaubFilterInput): Urlaub @aws_subscribe(mutations: ["createUrlaub"]) @aws_api_key @aws_iam
+  onUpdateUrlaub(filter: ModelSubscriptionUrlaubFilterInput): Urlaub @aws_subscribe(mutations: ["updateUrlaub"]) @aws_api_key @aws_iam
+  onDeleteUrlaub(filter: ModelSubscriptionUrlaubFilterInput): Urlaub @aws_subscribe(mutations: ["deleteUrlaub"]) @aws_api_key @aws_iam
+  onCreateAbteilung(filter: ModelSubscriptionAbteilungFilterInput): Abteilung @aws_subscribe(mutations: ["createAbteilung"]) @aws_api_key @aws_iam
+  onUpdateAbteilung(filter: ModelSubscriptionAbteilungFilterInput): Abteilung @aws_subscribe(mutations: ["updateAbteilung"]) @aws_api_key @aws_iam
+  onDeleteAbteilung(filter: ModelSubscriptionAbteilungFilterInput): Abteilung @aws_subscribe(mutations: ["deleteAbteilung"]) @aws_api_key @aws_iam
+  onCreateMitarbeiter(filter: ModelSubscriptionMitarbeiterFilterInput): Mitarbeiter @aws_subscribe(mutations: ["createMitarbeiter"]) @aws_api_key @aws_iam
+  onUpdateMitarbeiter(filter: ModelSubscriptionMitarbeiterFilterInput): Mitarbeiter @aws_subscribe(mutations: ["updateMitarbeiter"]) @aws_api_key @aws_iam
+  onDeleteMitarbeiter(filter: ModelSubscriptionMitarbeiterFilterInput): Mitarbeiter @aws_subscribe(mutations: ["deleteMitarbeiter"]) @aws_api_key @aws_iam
+  onCreateUrlaubMitarbeiter(filter: ModelSubscriptionUrlaubMitarbeiterFilterInput): UrlaubMitarbeiter @aws_subscribe(mutations: ["createUrlaubMitarbeiter"]) @aws_api_key @aws_iam
+  onUpdateUrlaubMitarbeiter(filter: ModelSubscriptionUrlaubMitarbeiterFilterInput): UrlaubMitarbeiter @aws_subscribe(mutations: ["updateUrlaubMitarbeiter"]) @aws_api_key @aws_iam
+  onDeleteUrlaubMitarbeiter(filter: ModelSubscriptionUrlaubMitarbeiterFilterInput): UrlaubMitarbeiter @aws_subscribe(mutations: ["deleteUrlaubMitarbeiter"]) @aws_api_key @aws_iam
+}
+
+type ModelAbteilungConnection @aws_api_key @aws_iam {
+  items: [Abteilung]!
+  nextToken: String
+  startedAt: AWSTimestamp
+}
+
+input ModelAbteilungFilterInput {
+  id: ModelIDInput
+  Bereich: ModelStringInput
+  Teatigkeit: ModelStringInput
+  and: [ModelAbteilungFilterInput]
+  or: [ModelAbteilungFilterInput]
+  not: ModelAbteilungFilterInput
+}
+
+input ModelAbteilungConditionInput {
+  Bereich: ModelStringInput
+  Teatigkeit: ModelStringInput
+  and: [ModelAbteilungConditionInput]
+  or: [ModelAbteilungConditionInput]
+  not: ModelAbteilungConditionInput
+}
+
+input CreateAbteilungInput {
+  id: ID
+  Bereich: String
+  Teatigkeit: String
+  _version: Int
+}
+
+input UpdateAbteilungInput {
+  id: ID!
+  Bereich: String
+  Teatigkeit: String
+  _version: Int
+}
+
+input DeleteAbteilungInput {
+  id: ID!
+  _version: Int
+}
+
+input ModelSubscriptionAbteilungFilterInput {
+  id: ModelSubscriptionIDInput
+  Bereich: ModelSubscriptionStringInput
+  Teatigkeit: ModelSubscriptionStringInput
+  and: [ModelSubscriptionAbteilungFilterInput]
+  or: [ModelSubscriptionAbteilungFilterInput]
+}
+
+type ModelMitarbeiterConnection @aws_iam @aws_api_key {
+  items: [Mitarbeiter]!
+  nextToken: String
+  startedAt: AWSTimestamp
+}
+
+input ModelMitarbeiterFilterInput {
+  id: ModelIDInput
+  Name: ModelStringInput
+  Abteilung: ModelStringInput
+  Telefon: ModelIntInput
+  Teatigkeit: ModelStringInput
+  Vorgesetzter: ModelStringInput
+  abteilungID: ModelIDInput
+  and: [ModelMitarbeiterFilterInput]
+  or: [ModelMitarbeiterFilterInput]
+  not: ModelMitarbeiterFilterInput
+}
+
+input ModelMitarbeiterConditionInput {
+  Name: ModelStringInput
+  Abteilung: ModelStringInput
+  Telefon: ModelIntInput
+  Teatigkeit: ModelStringInput
+  Vorgesetzter: ModelStringInput
+  abteilungID: ModelIDInput
+  and: [ModelMitarbeiterConditionInput]
+  or: [ModelMitarbeiterConditionInput]
+  not: ModelMitarbeiterConditionInput
+}
+
+input CreateMitarbeiterInput {
+  id: ID
+  Name: String
+  Abteilung: String
+  Telefon: Int
+  Teatigkeit: String
+  Vorgesetzter: String
+  abteilungID: ID!
+  _version: Int
+}
+
+input UpdateMitarbeiterInput {
+  id: ID!
+  Name: String
+  Abteilung: String
+  Telefon: Int
+  Teatigkeit: String
+  Vorgesetzter: String
+  abteilungID: ID
+  _version: Int
+}
+
+input DeleteMitarbeiterInput {
+  id: ID!
+  _version: Int
+}
+
+input ModelSubscriptionMitarbeiterFilterInput {
+  id: ModelSubscriptionIDInput
+  Name: ModelSubscriptionStringInput
+  Abteilung: ModelSubscriptionStringInput
+  Telefon: ModelSubscriptionIntInput
+  Teatigkeit: ModelSubscriptionStringInput
+  Vorgesetzter: ModelSubscriptionStringInput
+  abteilungID: ModelSubscriptionIDInput
+  and: [ModelSubscriptionMitarbeiterFilterInput]
+  or: [ModelSubscriptionMitarbeiterFilterInput]
+}
+
+type ModelUrlaubMitarbeiterConnection @aws_iam @aws_api_key {
+  items: [UrlaubMitarbeiter]!
+  nextToken: String
+  startedAt: AWSTimestamp
+}
+
+input ModelUrlaubMitarbeiterFilterInput {
+  id: ModelIDInput
+  urlaubId: ModelIDInput
+  mitarbeiterId: ModelIDInput
+  and: [ModelUrlaubMitarbeiterFilterInput]
+  or: [ModelUrlaubMitarbeiterFilterInput]
+  not: ModelUrlaubMitarbeiterFilterInput
+}
+
+input ModelUrlaubMitarbeiterConditionInput {
+  urlaubId: ModelIDInput
+  mitarbeiterId: ModelIDInput
+  and: [ModelUrlaubMitarbeiterConditionInput]
+  or: [ModelUrlaubMitarbeiterConditionInput]
+  not: ModelUrlaubMitarbeiterConditionInput
+}
+
+input CreateUrlaubMitarbeiterInput {
+  id: ID
+  urlaubId: ID!
+  mitarbeiterId: ID!
+  _version: Int
+}
+
+input UpdateUrlaubMitarbeiterInput {
+  id: ID!
+  urlaubId: ID
+  mitarbeiterId: ID
+  _version: Int
+}
+
+input DeleteUrlaubMitarbeiterInput {
+  id: ID!
+  _version: Int
+}
+
+input ModelSubscriptionUrlaubMitarbeiterFilterInput {
+  id: ModelSubscriptionIDInput
+  urlaubId: ModelSubscriptionIDInput
+  mitarbeiterId: ModelSubscriptionIDInput
+  and: [ModelSubscriptionUrlaubMitarbeiterFilterInput]
+  or: [ModelSubscriptionUrlaubMitarbeiterFilterInput]
+}
+
