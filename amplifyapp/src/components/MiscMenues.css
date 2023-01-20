@@ -1,0 +1,22 @@
+:root {
+    --miscMenuBG: #222;
+}
+
+#MiscMenu {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    justify-content: center;
+    justify-content: normal;
+    background-color: #555;
+}
+
+.miscMenuComp {
+    margin: 1%;
+    border: solid 2px var(--miscMenuBG);
+    border-radius: 6px;
+    background-color: var(--miscMenuBG);
+}
+
+.miscMenuComp:hover {
+    background-color: #fff;
+}

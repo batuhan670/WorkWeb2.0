@@ -38,13 +38,7 @@
 
 }
 
-.miscMenu {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  justify-content: center;
-  justify-content: normal;
-  background-color: #555;
-}
+
 
 .lastLine {
   background-color: #666;

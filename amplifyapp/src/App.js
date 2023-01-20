@@ -1,8 +1,6 @@
 import './App.css';
-import "./components/NewsIconLeft.js";
-import "./components/NewsIconRight.js";
 import logo from './logo.svg';
-import MiscMenues from './MiscMenues.js';
+import MiscMenues from './components/MiscMenues.js';
 import React from "react";
 import Topline from "./components/Topline.js"
 import Slideshow from './components/Slideshow.js';
