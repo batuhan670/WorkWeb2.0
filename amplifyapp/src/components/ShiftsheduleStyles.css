@@ -1,11 +1,17 @@
+:root {
+    --bordRad: 8px;
+    --sBordrad: calc(var(--bordRad) - 2.2px);
+}
+
 #shiftshedule {
     min-height: 100px;
 
     display: grid;
     grid-template-columns: repeat(7, 1fr);
-    color: var(--textColor);
 
-    background-color: var(--compColor);
+    color: #000;
+
+    background-color: #444;
 }
 
 #currentDay {
@@ -14,35 +20,51 @@
 }
 
 .day {
+    height: 5em;
+
+    align-content: space-between;
+
     margin: 2%;
 
+    border-width: 2px;
     border-style: solid;
-    border-radius: 5px;
-    border-width: 1%;
-    border-color: var(--dayColor);
+    border-color: #222;
+    border-radius: var(--bordRad);
 
-    background-color: var(--dayColor);
+    background-color: #222;
+
+    color: #fff;
+}
+
+.day:hover {
+    background-color: transparent;
+    color: #000;
 }
 
 .dayName {
-    margin: 2%;
+    height: auto;
+    border: inherit;
+    border-radius: var(--sBordrad);
+    color: inherit;
 
-    border-style: solid;
-    border-radius: 5px;
-    border-width: 1%;
-    border-color: #ddd;
+    font-size: calc(6px + 0.3em);
 
-    color: var(--textColor);
-
-    font-size: 1.5ch;
+    align-self: auto;
 }
 
 .dayHours {
-    font-size: 1em;
+    font-size: 20px;
+    color: #000;
 
-    margin: auto;
+    width: min-content;
+    height: auto;
 
-    border-width: 12px;
-    border-radius: 5px;
-    border-color: #111;
+    align-self: baseline;
+
+    border-width: 2px;
+    border-style: solid;
+    border-color: #000;
+    border-radius: var(--sBordrad);
+
+    background-color: #fff;
 }
