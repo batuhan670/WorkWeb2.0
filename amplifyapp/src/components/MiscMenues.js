@@ -1,6 +1,6 @@
 import React from "react"
 import { Link } from "react-router-dom";
-import "./MiscMenues.css";
+import "./MiscMenuesStyles.css";
 
 function WrapLink(Link) {
     return (

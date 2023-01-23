@@ -1,5 +1,5 @@
 import React from 'react'
-import "./Overview.css"
+import "./OverviewStyles.css"
 
 function Overview() {
     return (
