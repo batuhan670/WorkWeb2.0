@@ -2,7 +2,7 @@
     min-height: 50px;
     display: grid;
     grid-template-columns: auto;
-    background-color: var(--backGroundcolor);
+    background-color: #222;
     color: var(--textColor);
 }
 

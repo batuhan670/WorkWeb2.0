@@ -1,7 +1,7 @@
 #overview {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    background-color: #222;
+    background-color: #444;
 }
 
 .table {
