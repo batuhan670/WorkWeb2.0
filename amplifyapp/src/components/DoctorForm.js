@@ -11,10 +11,10 @@ const Forms = () => {
   const sendEmail = (e) => {
     e.preventDefault();
 
-    emailjs.sendForm('service_c6b2p35',
+    emailjs.sendForm('service_lb962pq',
       'template_84v2fxw',
       form.current,
-      'e_uV2THf0e3Hl4jlx')
+      'laz_YlsUdBBfBkmtI')
       .then((result) => {
         console.log(result.text);
         console.log("message sent")
@@ -39,7 +39,7 @@ const Forms = () => {
         <label>Nachricht</label>
         <label className='error' > </label>
         <input type = "file" name='file'></input>
-        <textarea name="message" rows="6" placeholder='Tippe hier deine Nachricht ein' />
+        <textarea name="message" rows="6" placeholder='Begründung für die Arbeitsunfähigkeit' />
         <input type="submit" value="Senden" className='btn' />
       </form>
 
