@@ -14,12 +14,12 @@ const MiscMenuLinks = [
     <Link to={`/addressbuch`}>Adressbuch</Link>,
     <Link to={`/urlaub`}>Urlaub</Link>,
     <Link to={`/pwaendern`}>Passwort ändern</Link>,
+    <Link to={`/doctorsnote`}>Krankmeldung</Link>,
     <Link to={`/addressbuch`}>Adressbuch</Link>,
     <Link to={`/urlaub`}>Urlaub</Link>,
     <Link to={`/pwaendern`}>Passwort ändern</Link>,
+    <Link to={`/doctorsnote`}>Krankmeldung</Link>,
     <Link to={`/addressbuch`}>Adressbuch</Link>,
-    <Link to={`/urlaub`}>Urlaub</Link>,
-    <Link to={`/pwaendern`}>Passwort ändern</Link>
 ]
 
 function MiscMenues() {
