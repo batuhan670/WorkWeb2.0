@@ -1,0 +1,26 @@
+type Urlaub @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  Urlaub: Float
+  Zeitausgleich: Float
+  Arbeitszeiten: Float
+  Mitarbeiters: [Mitarbeiter] @manyToMany(relationName: "UrlaubMitarbeiter")
+  Stunden: Float
+}
+
+type Abteilung @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  Bereich: String
+  Teatigkeit: String
+  Mitarbeiters: [Mitarbeiter] @hasMany(indexName: "byAbteilung", fields: ["id"])
+}
+
+type Mitarbeiter @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  Name: String
+  Abteilung: String
+  Telefon: Int
+  Teatigkeit: String
+  Vorgesetzter: String
+  abteilungID: ID! @index(name: "byAbteilung")
+  urlaubs: [Urlaub] @manyToMany(relationName: "UrlaubMitarbeiter")
+}
