@@ -1,6 +1,6 @@
 .carousel-root {
-    background-color: green;
-    min-height: 20px;
+    background-color: #333;
+    min-height: 40px;
     overflow: visible;
 }
 

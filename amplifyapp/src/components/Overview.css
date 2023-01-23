@@ -1,0 +1,14 @@
+#overview {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    background-color: #222;
+}
+
+.table {
+    margin: 1%;
+    border-width: 1%;
+    border-style: solid;
+    border-color: #234;
+    border-radius: 24px;
+    background-color: #aaa;
+}

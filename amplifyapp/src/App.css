@@ -23,23 +23,6 @@
   color: white;
 }
 
-.lineOne {
-  min-height: 20vmin;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  background-color: #222;
-}
-
-.lineTwo {
-  min-height: 20vmin;
-  display: grid;
-  grid-template-columns: 15% 70% 15%;
-  background-color: #333;
-
-}
-
-
-
 .lastLine {
   background-color: #666;
 }
