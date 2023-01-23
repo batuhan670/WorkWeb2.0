@@ -1,12 +1,12 @@
 import './AppStyles.css';
 import logo from './logo.svg';
-import MiscMenues from './components/MiscMenues.js';
+import MiscMenues from './components/miscmenu/MiscMenu.js';
 import React from "react";
-import Topline from "./components/Topline.js"
-import Overview from "./components/Overview.js"
-import Slideshow from './components/Slideshow.js';
+import Topline from "./components/topline/Topline.js"
+import Overview from "./components/overview/Overview.js"
+import Slideshow from './components/slideshow/Slideshow.js';
 import Shiftshedule from './components/shiftshedule/Shiftshedule.js';
-import Footer from './components/Footer';
+import Footer from './components/footer/Footer';
 
 
 function App() {
