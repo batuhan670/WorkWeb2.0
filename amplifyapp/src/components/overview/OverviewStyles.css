@@ -1,14 +1,20 @@
 #overview {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    background-color: #444;
 }
 
 .table {
     margin: 1%;
-    border-width: 1%;
+
+    border-width: 2px;
     border-style: solid;
-    border-color: #234;
+    border-color: var(--compClr);
     border-radius: 24px;
-    background-color: #aaa;
+
+    background-color: var(--compClr);
+}
+
+.table:hover {
+    background-color: var(--txtClr);
+    color: var(--compClr);
 }

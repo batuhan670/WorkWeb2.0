@@ -3,7 +3,7 @@ import "./ToplineStyles.css";
 
 function Topline() {
     return (
-        <div id="Topline">
+        <div id="department">
             Name der Abteilung
         </div>
     );

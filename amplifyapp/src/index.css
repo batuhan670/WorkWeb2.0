@@ -12,7 +12,8 @@ code {
 }
 
 :root {
-  --textColor: #000;
-  --compColor: #444;
-  --backGroundcolor: #fff;
+  --txtClr: rgb(188, 10, 10);
+  --bgClr: rgb(17, 64, 130);
+  --compClr: #333;
+  --scompClr: #456;
 }

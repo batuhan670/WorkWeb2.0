@@ -1,13 +1,10 @@
 import React from 'react'
-import DoctorForm from '../components/DoctorForm.js';
+import DoctorForm from '../components/miscmenu/DoctorForm.js';
 
-
-const DoctorsNote = () => {
+function DoctorsNote() {
   return (
     <div>
-<DoctorForm/>
-
-     
+      <DoctorForm />
     </div>
   )
 }

@@ -1,0 +1,19 @@
+.carousel-root {
+    border-style: dotted;
+    border-width: 4px;
+    border-color: black;
+    border-radius: 20px;
+
+    margin: 1%;
+    background-color: var(--bGc);
+    min-height: 100px;
+    overflow: visible;
+}
+
+.control-arrow {
+    width: 100px;
+}
+
+.sldImg {
+    max-height: 750px;
+}

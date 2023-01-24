@@ -6,18 +6,15 @@ import "./ShiftsheduleStyles.css";
 const Weekdays = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
 
 //Arbeitsstunden
-const WorkHoursStart = ["04:00", "04:00", "04:00", "04:00", "04:00", "", ""];
-const WorkHoursEnd = ["12:00", "12:00", "12:00", "12:00", "12:00", "", ""];
+const WorkHoursStart = ["04:00", "04:00", "04:00", "04:00", "04:00", "-", "-"];
+const WorkHoursEnd = ["12:00", "12:00", "12:00", "12:00", "12:00", "-", "-"];
 
 //DivElement fuer jeden Tag.
 function getDay(dayName, shiftStart, shiftEnd, number) {
     return <div className="day">
         <div className="dayName">{dayName[number]}</div>
-        <div className="dayHours">
-            <div>{shiftStart[number]}</div>
-            <div>---</div>
-            <div>{shiftEnd[number]}</div>
-        </div>
+        <div className="dH dHTop">{shiftStart[number]}</div>
+        <div className="dH dHBot">{shiftEnd[number]}</div>
     </div>
 };
 

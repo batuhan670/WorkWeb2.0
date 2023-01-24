@@ -1,6 +1,7 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "WrkWb",
+  "name": "WorkWeb App",
+  "description": "App for quick access to work information & management.",
   "icons": [
     {
       "src": "favicon.ico",

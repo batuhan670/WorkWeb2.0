@@ -1,6 +1,6 @@
 :root {
-    --bordRad: 8px;
-    --sBordrad: calc(var(--bordRad) - 2.2px);
+    --bordRad: 20px;
+    --sBordrad: calc(var(--bordRad) - 4.4px);
 }
 
 #shiftshedule {
@@ -9,62 +9,57 @@
     display: grid;
     grid-template-columns: repeat(7, 1fr);
 
-    color: #000;
-
-    background-color: #444;
-}
-
-#currentDay {
-    background-color: #1c1;
-    color: red;
+    color: var(--txtClr);
 }
 
 .day {
-    height: 5em;
-
-    align-content: space-between;
-
     margin: 2%;
 
-    border-width: 2px;
+    border-width: 4px;
     border-style: solid;
-    border-color: #222;
+    border-color: var(--compClr);
     border-radius: var(--bordRad);
 
-    background-color: #222;
-
-    color: #fff;
+    background-color: var(--compClr);
 }
 
 .day:hover {
-    background-color: transparent;
-    color: #000;
+    display: initial;
+    background-color: var(--txtClr);
+    color: var(--compClr);
 }
 
 .dayName {
-    height: auto;
-    border: inherit;
+    font-size: 20px;
     border-radius: var(--sBordrad);
-    color: inherit;
-
-    font-size: calc(6px + 0.3em);
-
-    align-self: auto;
 }
 
-.dayHours {
-    font-size: 20px;
-    color: #000;
-
-    width: min-content;
-    height: auto;
-
-    align-self: baseline;
-
-    border-width: 2px;
+.dH {
+    border-width: inherit;
     border-style: solid;
-    border-color: #000;
-    border-radius: var(--sBordrad);
+    border-color: var(--scompClr);
+    background-color: var(--scompClr);
 
-    background-color: #fff;
+}
+
+.dH:hover {
+    border-color: var(--compClr);
+    background-color: var(--txtClr);
+}
+
+.dHTop {
+    border-bottom: 0;
+    border-top-left-radius: var(--sBordrad);
+    border-top-right-radius: var(--sBordrad);
+}
+
+.dHBot {
+    border-top: 0;
+    border-bottom-left-radius: var(--sBordrad);
+    border-bottom-right-radius: var(--sBordrad);
+}
+
+.dayHours:hover {
+    background-color: var(--compClr);
+    color: #ddd;
 }

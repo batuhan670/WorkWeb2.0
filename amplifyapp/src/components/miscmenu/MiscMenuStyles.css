@@ -7,16 +7,16 @@
     grid-template-columns: repeat(3, 1fr);
     justify-content: center;
     justify-content: normal;
-    background-color: #555;
 }
 
-.miscMenuComp {
+.mMComp {
     margin: 1%;
-    border: solid 2px var(--miscMenuBG);
+    border: solid 2px var(--compClr);
     border-radius: 6px;
-    background-color: var(--miscMenuBG);
+    background-color: var(--compClr);
 }
 
-.miscMenuComp:hover {
-    background-color: #fff;
+.mMComp:hover {
+    background-color: var(--txtClr);
+    color: var(--compClr);
 }
