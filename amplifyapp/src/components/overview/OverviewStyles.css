@@ -3,8 +3,31 @@
     grid-template-columns: repeat(3, 1fr);
 }
 
+#crrntHrs {
+    border-width: 2px;
+    border-style: solid;
+    border-color: var(--scompClr);
+    border-radius: 24px;
+
+    padding: 2rem;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+
+
+    background-color: var(--bgCrdtHrs);
+}
+
 .table {
     margin: 1%;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-items: center;
+    justify-content: space-between;
 
     border-width: 2px;
     border-style: solid;

@@ -6,7 +6,7 @@ function Overview() {
         <div id="overview">
             <div className='table'>
                 Aktuelle Stunden<br />
-                83,2
+                <div id="crrntHrs">15</div>
             </div>
             <div className='table'>
                 Vorgesetzer<br />
