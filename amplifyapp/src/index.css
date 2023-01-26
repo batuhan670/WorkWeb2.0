@@ -35,5 +35,4 @@ code {
   --scompClr: #456;
   --bgCrdtHrs: 15;
   --bgCHH: calc(60 + calc(var(--bgCrdtHrs) * 3));
-  --bgCrdtHrs: hsl(60, 50%, 50%);
 }
