@@ -30,10 +30,10 @@ const Navbar = () => {
                 <h1>WorkWeb.</h1>
             </Link>
 
-            <div className="navbarAbteilung">
-           <Link>
-                    <h1 >Abteilung</h1>
-                    </Link>
+
+            <Link>
+                <h1 className="xx">Abteilung</h1>
+            </Link> <div className="navbarAbteilung">
             </div>
             <ul className={click ? "nav-menu active" : "nav-menu"}>
                 <li>
@@ -53,16 +53,16 @@ const Navbar = () => {
                     <div className={submenuActive ? "submenu active" : "submenu"}>
                         <ul>
                             <li>
-                            <Link to="/Mitarbeiter">Passwort ändern</Link>
+                                <Link to="/Mitarbeiter">Passwort ändern</Link>
                             </li>
                             <li>
-                            <Link to="/Mitarbeiter"></Link>
+                                <Link to="/Mitarbeiter"></Link>
                             </li>
                         </ul>
                     </div>
                 </li>
-                
-                
+
+
             </ul>
             <div className="hamburger" onClick=
                 {handleClick}>
