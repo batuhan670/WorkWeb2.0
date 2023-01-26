@@ -1,5 +1,8 @@
+*{margin: 0;
+padding: 0;}
+
 body {
-  margin: 0;
+ 
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
@@ -13,7 +16,7 @@ code {
 
 :root {
   --txtClr: rgb(188, 10, 10);
-  --bgClr: rgb(17, 64, 130);
+  --bgClr: rgb(41, 128, 200);
   --compClr: #333;
-  --scompClr: #456;
+  --scompClr: rgb(194, 194, 194);
 }

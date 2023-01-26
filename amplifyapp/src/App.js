@@ -7,19 +7,20 @@ import Newsslide from './components/newsslide/Newsslide.js';
 import Shiftshedule from './components/shiftshedule/Shiftshedule.js';
 import MiscMenues from './components/miscmenu/MiscMenu.js';
 import Footer from './components/footer/Footer';
-
+import Navbar from "./components/navbar/Navbar";
 
 function App() {
   return (
     <div className="App">
+       < Navbar   />
       <header className="App-header">
-        <Topline />
-        <img src={logo} className="App-logo" alt="logo" />
+     
+    
         <Overview />
-        <Newsslide />
+        <Newsslide /> 
         <Shiftshedule />
         <MiscMenues />
-        <Footer />
+        <Footer />   
       </header >
     </div >
   );

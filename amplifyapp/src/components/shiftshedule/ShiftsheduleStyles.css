@@ -4,16 +4,19 @@
 }
 
 #shiftshedule {
-    min-height: 100px;
+    
 
-    display: grid;
-    grid-template-columns: repeat(7, 1fr);
+    display: flex;
+    justify-content: space-around;
+    
+  
 
     color: var(--txtClr);
 }
 
 .day {
     margin: 2%;
+    width: 300px;
 
     border-width: 4px;
     border-style: solid;
@@ -30,6 +33,7 @@
 }
 
 .dayName {
+    padding: 10px;
     font-size: 20px;
     border-radius: var(--sBordrad);
 }
@@ -62,4 +66,17 @@
 .dayHours:hover {
     background-color: var(--compClr);
     color: #ddd;
+}
+@media screen and (max-width: 1200px) {
+    #shiftshedule {
+    
+
+        display: grid;
+        grid-template-columns: repeat(2,1fr);
+        justify-items: center;
+
+      
+    
+    }
+    
 }

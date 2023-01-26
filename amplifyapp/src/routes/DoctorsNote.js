@@ -1,5 +1,5 @@
 import React from 'react'
-import DoctorForm from '../components/miscmenu/DoctorForm.js';
+import DoctorForm from '../components/doctorForms/DoctorForm.js';
 
 function DoctorsNote() {
   return (

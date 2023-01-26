@@ -20,7 +20,7 @@ function getDay(dayName, shiftStart, shiftEnd, number) {
 
 function Shiftshedule() {
     return (
-        <div id="shiftshedule">
+        <div id="shiftshedule" >
             {getDay(Weekdays, WorkHoursStart, WorkHoursEnd, 0)}
             {getDay(Weekdays, WorkHoursStart, WorkHoursEnd, 1)}
             {getDay(Weekdays, WorkHoursStart, WorkHoursEnd, 2)}

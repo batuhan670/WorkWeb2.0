@@ -1,5 +1,6 @@
 import React, { useRef } from 'react';
 import emailjs from '@emailjs/browser';
+import  "./DoctorFormStyles.css";
 
 
 
@@ -28,7 +29,7 @@ const Forms = () => {
 
 
   return (
-    <div>
+    <div >
       <form ref={form} onSubmit={sendEmail} >
         <label>Dein Name</label>
         <label className='error'>  </label>

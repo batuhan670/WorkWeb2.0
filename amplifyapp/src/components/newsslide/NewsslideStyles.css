@@ -17,3 +17,6 @@
 .sldImg {
     max-height: 750px;
 }
+.thumbs{
+    display: none;
+} 
