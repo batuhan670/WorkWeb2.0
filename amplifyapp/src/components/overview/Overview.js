@@ -1,18 +1,16 @@
 import React, { useEffect, useState } from 'react'
 import "./OverviewStyles.css"
 
-var bgCHH = document.querySelector(".currentHours")
-
 function Overview() {
 
     function getColorStyle(number) {
-        const BGhue = (number * 2.5) + 60;
-        const BGsat = number + 50;
+        const BGhue = 60 + number;
+        const BGsat = Math.ceil(Math.abs(number), 50) + 50;
         const BGhsl = "hsl(" + BGhue + ", " + BGsat + "%, 50%"
         return { "backgroundColor": BGhsl }
     }
 
-    const [hours, setHours] = useState(10)
+    const [hours, setHours] = useState(+20)
 
     useEffect(() => {
         async function doSomeWork() {
@@ -20,13 +18,13 @@ function Overview() {
 
             await new Promise(resolve => setTimeout(resolve, 2000))
 
-            setHours(-25)
+            setHours(-30)
         }
         doSomeWork()
     })
 
     return (
-        <div id="overview">
+        <div id='overview'>
             <div className='overviewtable'>
                 <div className='tableName'>Aktuelle Stunden</div>
                 <div className='tableContent'><div id="currentHours" style={getColorStyle(hours)}>{hours}</div></div>

@@ -7,46 +7,49 @@
 
 #overview {
     display: flex;
-    flex-direction: row;
     justify-content: center;
+    transition-duration: 0.5s;
 }
 
 #currentHours {
-    border: var(--ovrvwBDpx) solid var(--scompClr);
-    border-radius: 5px;
-
+    height: 2rem;
+    width: 2rem;
     padding: 1rem;
 
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+    border: var(--ovrvwBDpx) solid var(--scompClr);
+    border-radius: 50%;
 
-    background-color: hsl(60, 50%, 50%);
+    color: #000;
 }
 
 .overviewtable {
     margin: 2%;
     min-width: 13rem;
 
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
 
     border: var(--ovrvwBDpx) solid var(--compClr);
     border-radius: var(--ovrvwBDRpx);
 
     background-color: var(--compClr);
-}
-
-.overviewtable:hover {
-    background-color: var(--txtClr);
-    color: var(--compClr);
+    transition-duration: inherit;
 }
 
 .tableName {
     min-height: 4rem;
-
     border: var(--ovrvwBDpx) solid var(--compClr);
     border-radius: var(--ovrvwSBDRpx);
     background-color: inherit;
+    transition: inherit;
+}
 
+.tableName:hover {
+    background-color: var(--txtClr);
+    color: var(--compClr);
+    transform-box: border-box;
 }
 
 .tableContent {
@@ -54,7 +57,17 @@
 
     border: var(--ovrvwBDpx) solid var(--compClr);
     border-radius: var(--ovrvwSBDRpx);
-    width: auto;
     background-color: var(--scompClr);
 
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    transition-duration: inherit;
+}
+
+.tableContent:hover {
+    color: var(--scompClr);
+    background-color: var(--txtClr);
+    transform-box: border-box;
 }

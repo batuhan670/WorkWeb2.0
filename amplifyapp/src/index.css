@@ -29,7 +29,8 @@ code {
 }
 
 :root {
-  --txtClr: rgb(188, 10, 10);
+  --txtClr: hsl(137, 100%, 50%);
+  --HVtxtClr: calc(var(--txtClr));
   --bgClr: rgb(17, 64, 130);
   --compClr: #333;
   --scompClr: #456;
