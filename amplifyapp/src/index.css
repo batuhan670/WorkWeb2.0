@@ -1,8 +1,25 @@
+* {
+  font-size: 1.7rem;
+  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+@media (max-width: 450px) {
+  html {
+    font-size: 50%;
+  }
+}
+
 *{margin: 0;
 padding: 0;}
 
 body {
- 
+  margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
@@ -15,8 +32,11 @@ code {
 }
 
 :root {
-  --txtClr: rgb(188, 10, 10);
-  --bgClr: rgb(41, 128, 200);
+  --txtClr: hsl(137, 100%, 50%);
+  --HVtxtClr: calc(var(--txtClr));
+  --bgClr: rgb(17, 64, 130);
   --compClr: #333;
-  --scompClr: rgb(194, 194, 194);
+  --scompClr: #456;
+  --bgCrdtHrs: 15;
+  --bgCHH: calc(60 + calc(var(--bgCrdtHrs) * 3));
 }

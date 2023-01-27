@@ -33,8 +33,6 @@
 }
 
 .dayName {
-    padding: 10px;
-    font-size: 20px;
     border-radius: var(--sBordrad);
 }
 

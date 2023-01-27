@@ -1,21 +1,76 @@
+:root {
+    --ovrvwBDpx: 2px;
+    --BDRmult: 6;
+    --ovrvwBDRpx: calc(var(--ovrvwBDpx) * var(--BDRmult));
+    --ovrvwSBDRpx: calc(var(--ovrvwBDRpx) - var(--ovrvwBDpx));
+}
+
 #overview {
+    display: flex;
+    justify-content: center;
+    transition-duration: 0.5s;
+}
+
+#currentHours {
+    height: 2rem;
+    width: 2rem;
+    padding: 1rem;
+
+    border: var(--ovrvwBDpx) solid var(--scompClr);
+    border-radius: 50%;
+
+    color: #000;
     margin-top: 90px;
     display: grid;
     grid-template-columns: repeat(3, 1fr);
 }
 
-.table {
-    margin: 1%;
+.overviewtable {
+    margin: 2%;
+    min-width: 13rem;
 
-    border-width: 2px;
-    border-style: solid;
-    border-color: var(--compClr);
-    border-radius: 24px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+
+    border: var(--ovrvwBDpx) solid var(--compClr);
+    border-radius: var(--ovrvwBDRpx);
 
     background-color: var(--compClr);
+    transition-duration: inherit;
 }
 
-.table:hover {
+.tableName {
+    min-height: 4rem;
+    border: var(--ovrvwBDpx) solid var(--compClr);
+    border-radius: var(--ovrvwSBDRpx);
+    background-color: inherit;
+    transition: inherit;
+}
+
+.tableName:hover {
     background-color: var(--txtClr);
     color: var(--compClr);
+    transform-box: border-box;
+}
+
+.tableContent {
+    min-height: 6rem;
+
+    border: var(--ovrvwBDpx) solid var(--compClr);
+    border-radius: var(--ovrvwSBDRpx);
+    background-color: var(--scompClr);
+
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    transition-duration: inherit;
+}
+
+.tableContent:hover {
+    color: var(--scompClr);
+    background-color: var(--txtClr);
+    transform-box: border-box;
 }
