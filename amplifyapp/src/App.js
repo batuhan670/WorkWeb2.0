@@ -1,5 +1,6 @@
 import React from "react";
 import './AppStyles.css';
+import './styles/CustomColors.css';
 import Topline from "./components/topline/Topline.js"
 import logo from './logo.svg';
 import Overview from "./components/overview/Overview.js"
@@ -12,15 +13,13 @@ import Navbar from "./components/navbar/Navbar";
 function App() {
   return (
     <div className="App">
-       < Navbar   />
+      < Navbar />
       <header className="App-header">
-     
-    
         <Overview />
-        <Newsslide /> 
+        <Newsslide />
         <Shiftshedule />
         <MiscMenues />
-        <Footer />   
+        <Footer />
       </header >
     </div >
   );
