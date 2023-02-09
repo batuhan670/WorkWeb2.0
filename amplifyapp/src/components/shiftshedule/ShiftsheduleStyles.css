@@ -1,25 +1,22 @@
 :root {
     --bordRad: 20px;
-    --sBordrad: calc(var(--bordRad) - 4.4px);
+    --sBordrad: calc(var(--bordRad)*0.75);
 }
 
 #shiftshedule {
-    
-
     display: flex;
     justify-content: space-around;
-    
-  
-
     color: var(--txtClr);
 }
 
 .day {
-    margin: 2%;
-    width: 300px;
+    margin: 0.3rem;
+    min-width: 5rem;
+    max-width: 20rem;
 
     border-width: 4px;
     border-style: solid;
+
     border-color: var(--compClr);
     border-radius: var(--bordRad);
 
@@ -28,7 +25,7 @@
 
 .day:hover {
     display: initial;
-    background-color: var(--txtClr);
+    background-color: var(--txtClr);  
     color: var(--compClr);
 }
 
@@ -41,7 +38,6 @@
     border-style: solid;
     border-color: var(--scompClr);
     background-color: var(--scompClr);
-
 }
 
 .dH:hover {
@@ -53,28 +49,43 @@
     border-bottom: 0;
     border-top-left-radius: var(--sBordrad);
     border-top-right-radius: var(--sBordrad);
+    padding-bottom: 3px;
+}
+
+.dHTop:hover {
+    padding-bottom: 0px;
+    border-bottom-width: 3px;
+    border-bottom-color: inherit;
+    border-bottom-style: solid;
 }
 
 .dHBot {
     border-top: 0;
     border-bottom-left-radius: var(--sBordrad);
     border-bottom-right-radius: var(--sBordrad);
+    padding-top: 3px;
+}
+
+.dHBot:hover {
+    padding-top: 0px;
+    border-top-width: 3px;
+    border-top-color: inherit;
+    border-top-style: solid;
 }
 
 .dayHours:hover {
     background-color: var(--compClr);
     color: #ddd;
 }
-@media screen and (max-width: 1200px) {
-    #shiftshedule {
-    
 
-        display: grid;
-        grid-template-columns: repeat(2,1fr);
-        justify-items: center;
-
-      
-    
+@media screen and (max-width: 361px) {
+    :root {
+        --bordRad: 12px;
     }
-    
+    .day {
+        margin: 0px;
+        margin-left: 2px;
+        margin-right: 2px;
+        border-width: 3px;
+    }
 }
