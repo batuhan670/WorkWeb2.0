@@ -3,7 +3,7 @@ import axios from 'axios';
 
 const Data = () => {
     const [formData, setFormData] = useState({
-        id: '',
+
         name: '',
         phone: '',
         email: '',
@@ -26,7 +26,7 @@ const Data = () => {
                 console.log(res);
                 console.log(res.data);
                 setFormData({
-                    id: '',
+
                     name: '',
                     phone: '',
                     email: '',
@@ -42,10 +42,6 @@ const Data = () => {
 
     return (
         <form onSubmit={handleSubmit}>
-            <div>
-                <label htmlFor="id">Id:</label>
-                <input type="text" id="id" name="id" value={formData.id} onChange={handleInputChange} />
-            </div>
             <div>
                 <label htmlFor="name">Name:</label>
                 <input type="text" id="name" name="name" value={formData.name} onChange={handleInputChange} />

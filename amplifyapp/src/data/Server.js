@@ -4,7 +4,7 @@ const mysql = require('mysql2');
 const app = express();
 
 const connection = mysql.createConnection({
-  host: 'localhost:3306',
+  host: '3306',
   user: 'root',
   password: 'Alperen5858',
   database: 'workwebdb'
@@ -19,21 +19,21 @@ connection.connect((error) => {
 });
 
 app.listen(3000, () => {
-  console.log('Express server is running on http://localhost:3000');
+  console.log('Express server is running on http://localhost:3000/');
 });
 
 
 app.use(express.json());
 
 app.post('/api/data', (req, res) => {
-  const { id, name, phone, email, department, position, manager } = req.body;
+  const { name, phone, email, department, position, manager } = req.body;
 
   const query = `
-    INSERT INTO employees (id, name, phone, email, department, position, manager)
-    VALUES (?, ?, ?, ?, ?, ?,?);
+    INSERT INTO employees ( name, phone, email, department, position, manager)
+    VALUES (?, ?, ?, ?, ?, ?);
   `;
 
-  connection.query(query, [id, name, phone, email, department, position, manager], (error, results) => {
+  connection.query(query, [name, phone, email, department, position, manager], (error, results) => {
     if (error) {
       console.error(error);
       res.status(500).send('Error saving data to database');
