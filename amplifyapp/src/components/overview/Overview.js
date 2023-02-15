@@ -1,12 +1,12 @@
 import React from 'react'
 import "./OverviewStyles.css"
+import EmployeeHours from '../../data/Employee_hours'
 
 function Overview() {
     return (
         <div id="overview">
             <div className='table'>
-                Aktuelle Stunden<br />
-                83,2
+                <EmployeeHours />
             </div>
             <div className='table'>
                 Vorgesetzer<br />

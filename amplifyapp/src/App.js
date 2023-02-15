@@ -12,15 +12,16 @@ import Navbar from "./components/navbar/Navbar";
 function App() {
   return (
     <div className="App">
-       < Navbar   />
+      < Navbar />
       <header className="App-header">
-     
-    
+
+
         <Overview />
-        <Newsslide /> 
         <Shiftshedule />
+        <Newsslide />
+
         <MiscMenues />
-        <Footer />   
+        <Footer />
       </header >
     </div >
   );

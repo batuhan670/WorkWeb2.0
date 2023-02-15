@@ -4,13 +4,15 @@ import axios from 'axios';
 const EmployeeHours = () => {
     const [startTime, setStartTime] = useState(null);
     const [stopTime, setStopTime] = useState(null);
-    const [hours, setHours] = useState(0);
+    const [elapsedTime, setElapsedTime] = useState(0);
+    const [totalHours, setTotalHours] = useState(0);
     const [isRunning, setIsRunning] = useState(false);
 
     useEffect(() => {
         if (startTime && stopTime) {
-            const elapsedTime = stopTime - startTime;
-            setHours(hours + elapsedTime / (1000 * 60 * 60));
+            const timeDiff = stopTime - startTime;
+            setElapsedTime(timeDiff);
+            setTotalHours(totalHours + timeDiff / (1000 * 60 * 60));
         }
     }, [startTime, stopTime]);
 
@@ -29,7 +31,7 @@ const EmployeeHours = () => {
     };
 
     const handleSaveClick = () => {
-        axios.post('/api/employee_hours', { hours })
+        axios.post('/api/employee_hours', { totalHours })
             .then(res => {
                 console.log(res);
                 console.log(res.data);
@@ -46,7 +48,10 @@ const EmployeeHours = () => {
                 <button onClick={handleStopClick} disabled={!isRunning}>Stop</button>
             </div>
             <div>
-                Total Hours: {hours.toFixed(2)}
+                Elapsed Time: {elapsedTime ? (elapsedTime / (1000 * 60 * 60)).toFixed(2) + ' hours' : 'N/A'}
+            </div>
+            <div>
+                Total Hours: {totalHours.toFixed(2)} hours
             </div>
             <button onClick={handleSaveClick}>Save</button>
         </div>
