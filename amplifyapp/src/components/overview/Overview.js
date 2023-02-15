@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import "./OverviewStyles.css"
+import EmployeeHours from '../../data/Employee_hours'
 
 function Overview() {
 
@@ -24,10 +25,9 @@ function Overview() {
     })
 
     return (
-        <div id='overview'>
-            <div className='overviewtable'>
-                <div className='tableName'>Aktuelle Stunden</div>
-                <div className='tableContent'><div id="currentHours" style={getColorStyle(hours)}>{hours}</div></div>
+        <div id="overview">
+            <div className='table'>
+                <EmployeeHours />
             </div>
             <div className='overviewtable'>
                 <div className='tableName'>Vorgesetzer</div>
