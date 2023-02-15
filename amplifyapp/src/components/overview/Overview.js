@@ -26,7 +26,7 @@ function Overview() {
     return (
         <div id='overview' 
         //Delete style, once adjusted.
-        style={{'margin-top':'150px'}}>
+        style={{'marginTop':'150px'}}>
             <div className='overviewtable'>
                 <div className='tableName'>Aktuelle<br/>Stunden</div>
                 <div className='tableContent'><div id="currentHours" style={getColorStyle(hours)}>{hours}</div></div>
