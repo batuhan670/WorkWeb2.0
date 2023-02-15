@@ -25,9 +25,12 @@ function Overview() {
     })
 
     return (
-        <div id="overview">
-            <div className='table'>
-                <EmployeeHours />
+        <div id='overview'
+            //Delete style, once adjusted.
+            style={{ 'margin-top': '150px' }}>
+            <div className='overviewtable'>
+                <div className='tableName'>Aktuelle<br />Stunden</div>
+                <div className='tableContent'><div id="currentHours" style={getColorStyle(hours)}>{hours}</div></div>
             </div>
             <div className='overviewtable'>
                 <div className='tableName'>Vorgesetzer</div>
@@ -35,7 +38,7 @@ function Overview() {
                     Kontakte</div>
             </div>
             <div className='overviewtable'>
-                <div className='tableName'>Facility Manager</div>
+                <div className='tableName'>Facility<br />Manager</div>
                 <div className='tableContent'>Udo Jürgens</div>
             </div>
         </div>

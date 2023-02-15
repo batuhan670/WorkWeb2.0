@@ -15,9 +15,6 @@ html {
   }
 }
 
-*{margin: 0;
-padding: 0;}
-
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -31,12 +28,3 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
-:root {
-  --txtClr: hsl(137, 100%, 50%);
-  --HVtxtClr: calc(var(--txtClr));
-  --bgClr: rgb(17, 64, 130);
-  --compClr: #333;
-  --scompClr: #456;
-  --bgCrdtHrs: 15;
-  --bgCHH: calc(60 + calc(var(--bgCrdtHrs) * 3));
-}

@@ -1,9 +1,18 @@
 import React from "react";
 import "./ShiftsheduleStyles.css";
 
-
+const msinaDay = 86400000;
+const userLocale = navigator.languages && navigator.languages.length ? navigator.languages[0] : navigator.language;
 //Benennung Wochentage
-const Weekdays = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+function localeDayNames() {
+    let weekDayNames = new Array(6);
+    for (let index = 0; index < 7; index++) {
+        weekDayNames[index] = new Date((index + 4) * msinaDay).toLocaleDateString(userLocale, { weekday: 'short' });
+    }
+    return weekDayNames;
+}
+const Weekdays = localeDayNames();
+//["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
 
 //Arbeitsstunden
 const WorkHoursStart = ["04:00", "04:00", "04:00", "04:00", "04:00", "-", "-"];

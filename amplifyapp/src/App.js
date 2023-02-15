@@ -1,5 +1,6 @@
 import React from "react";
 import './AppStyles.css';
+import './styles/CustomColors.css';
 import Topline from "./components/topline/Topline.js"
 import logo from './logo.svg';
 import Overview from "./components/overview/Overview.js"
@@ -14,11 +15,10 @@ function App() {
     <div className="App">
       < Navbar />
       <header className="App-header">
-
-
         <Overview />
-        <Shiftshedule />
         <Newsslide />
+        <Shiftshedule />
+
 
         <MiscMenues />
         <Footer />

@@ -12,17 +12,19 @@
 }
 
 #currentHours {
-    height: 2rem;
-    width: 2rem;
+    height: 3rem;
+    width: 3rem;
     padding: 1rem;
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    
 
     border: var(--ovrvwBDpx) solid var(--scompClr);
     border-radius: 50%;
 
     color: #000;
-    margin-top: 90px;
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
 }
 
 .overviewtable {
@@ -43,6 +45,11 @@
 
 .tableName {
     min-height: 4rem;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
     border: var(--ovrvwBDpx) solid var(--compClr);
     border-radius: var(--ovrvwSBDRpx);
     background-color: inherit;
@@ -63,9 +70,9 @@
     background-color: var(--scompClr);
 
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
-    align-items: center;
+
     transition-duration: inherit;
 }
 
