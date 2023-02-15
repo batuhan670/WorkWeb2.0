@@ -1,8 +1,8 @@
 import React from "react";
 import './AppStyles.css';
 import './styles/CustomColors.css';
-import Topline from "./components/topline/Topline.js"
-import logo from './logo.svg';
+//import Topline from "./components/topline/Topline.js"
+//import logo from './logo.svg';
 import Overview from "./components/overview/Overview.js"
 import Newsslide from './components/newsslide/Newsslide.js';
 import Shiftshedule from './components/shiftshedule/Shiftshedule.js';
