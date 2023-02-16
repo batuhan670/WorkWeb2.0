@@ -5,6 +5,9 @@
 /.pnp
 .pnp.js
 
+# For custom colour-choice
+/src/styles/CustomColors.css
+
 # testing
 /coverage
 
