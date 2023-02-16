@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from 'react'
-import "./OverviewStyles.css"
+import React from 'react';
+//import { useEffect, useState } from 'react';
+import "./OverviewStyles.css";
 
 function Overview() {
     const hours = -15;
