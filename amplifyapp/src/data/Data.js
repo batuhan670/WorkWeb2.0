@@ -21,7 +21,7 @@ const Data = () => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        axios.post('/api/data', formData)
+        axios.post('/api/employees', formData)
             .then(res => {
                 console.log(res);
                 console.log(res.data);

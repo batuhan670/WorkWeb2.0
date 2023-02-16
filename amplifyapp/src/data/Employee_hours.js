@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { SERVER_BASE_URL } from './constants';
 
 const EmployeeHours = () => {
     const [startTime, setStartTime] = useState(null);
@@ -31,7 +32,7 @@ const EmployeeHours = () => {
     };
 
     const handleSaveClick = () => {
-        axios.post('/api/employee_hours', { totalHours })
+        axios.post(SERVER_BASE_URL + 'api/employee_hours', { totalHours })
             .then(res => {
                 console.log(res);
                 console.log(res.data);

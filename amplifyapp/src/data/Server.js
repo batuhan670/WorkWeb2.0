@@ -1,7 +1,9 @@
 const express = require('express');
 const mysql = require('mysql2');
+const cors = require('cors');
 
 const app = express();
+app.use(cors());
 
 const connection = mysql.createConnection({
   host: 'localhost',
@@ -52,6 +54,23 @@ app.get('/api/employees', (req, res) => {
     }
   });
 });
+
+app.get('/api/employees/:id', (req, res) => {
+  connection.query('SELECT * FROM employees where id = ' + req.params["id"], (error, results) => {
+    if (error) {
+      console.error(error);
+      res.status(500).send('Error retrieving data from database');
+    } else {
+      if (results.length == 0) {
+        res.sendStatus(404)
+      } else {
+        res.json(results[0]);
+      }
+    }
+  });
+});
+
+
 
 app.post('/api/employee_hours', (req, res) => {
   const { employeeId, workDate, startTime, stopTime, totalHours } = req.body;
