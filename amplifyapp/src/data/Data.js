@@ -3,13 +3,12 @@ import axios from 'axios';
 
 const Data = () => {
     const [formData, setFormData] = useState({
-
         name: '',
         phone: '',
         email: '',
         department: '',
         position: '',
-        manager: ''
+        manager_IDemployees: '' // updated for the new column name in employees table
     });
 
     const handleInputChange = (event) => {
@@ -26,13 +25,12 @@ const Data = () => {
                 console.log(res);
                 console.log(res.data);
                 setFormData({
-
                     name: '',
                     phone: '',
                     email: '',
                     department: '',
                     position: '',
-                    manager: ''
+                    manager_IDemployees: '' // updated for the new column name in employees table
                 });
             })
             .catch(error => {
@@ -64,7 +62,7 @@ const Data = () => {
             </div>
             <div>
                 <label htmlFor="manager">Manager:</label>
-                <input type="text" id="manager" name="manager" value={formData.manager} onChange={handleInputChange} />
+                <input type="text" id="manager" name="manager_IDemployees" value={formData.manager_IDemployees} onChange={handleInputChange} /> {/* updated for the new column name in employees table */}
             </div>
             <button type="submit">Submit</button>
         </form>
@@ -72,3 +70,4 @@ const Data = () => {
 };
 
 export default Data;
+
