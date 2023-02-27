@@ -3,15 +3,30 @@ import "./ShiftsheduleStyles.css";
 
 const msinaDay = 86400000;
 const userLocale = navigator.languages && navigator.languages.length ? navigator.languages[0] : navigator.language;
+
+
+let weekdayNameLength;
+function weekdayNameLengthDecision(x) {
+    if (x.matches) {
+        weekdayNameLength = "short";
+        console.log("Short weekday names")
+    } else {
+        weekdayNameLength = "long";
+        console.log("Long weekday names")
+    }
+}
+let mediaSize = window.matchMedia("(max-width: 700px)");
+//weekdayNameLengthDecision(mediaSize);
+mediaSize.addEventListener('change', () => { weekdayNameLengthDecision(mediaSize) });
 //Benennung Wochentage
 function localeDayNames() {
     let weekDayNames = new Array(6);
     for (let index = 0; index < 7; index++) {
-        weekDayNames[index] = new Date((index + 4) * msinaDay).toLocaleDateString(userLocale, { weekday: 'short' });
+        weekDayNames[index] = new Date((index + 4) * msinaDay).toLocaleDateString(userLocale, { weekday: weekdayNameLength });
     }
     return weekDayNames;
 }
-const Weekdays = localeDayNames();
+let Weekdays = localeDayNames();
 //["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
 
 //Arbeitsstunden
