@@ -3,25 +3,16 @@ import "./OverviewStyles.css"
 import EmployeeHours from '../../data/Employee_hours'
 
 function Overview() {
-    const hours = -15;
-    function getHourColorStyle(number) {
-        return {
-            "backgroundColor":
-                "hsl(" + (60 + number) + ", " + (Math.ceil(Math.abs(number), 50) + 50) + "%, 50%"
-        }
-    };
+    const [userData, setUserData] = useState()
 
-    /*
-        const [hours, setHours] = useState(+20);
-        useEffect(() => {
-            async function changeHoursTest() {
-                console.log("Doing some work")
-                await new Promise(resolve => setTimeout(resolve, 5000))
-                setHours(-30)
-            }
-            changeHoursTest()
-        });
-    */
+    useEffect(() => {
+        async function loadData() {
+            const result = await fetch("http://localhost:3000/api/employees/1")
+            const userData = await result.json()
+            setUserData(userData)
+        }
+        loadData()
+    }, [])
 
     return (
         <div id='overview'
@@ -31,10 +22,11 @@ function Overview() {
                 <div className='tableName'>Aktuelle<br />Stunden</div>
                 <div className='tableContent'><div id="currentHours" style={getHourColorStyle(hours)}>{hours}</div></div>
             </div>
-            <div className='overviewtable'>
-                <div className='tableName'>Vorgesetzer</div>
-                <div className='tableContent'>Anwesenheit<br />
-                    Kontakte</div>
+            <div className='table'>
+                Vorgesetzer
+                {userData?.manager}<br />
+                Anwesenheit<br />
+                Kontakte
             </div>
             <div className='overviewtable'>
                 <div className='tableName'>Facility<br />Manager</div>

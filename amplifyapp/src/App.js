@@ -9,19 +9,21 @@ import Shiftshedule from './components/shiftshedule/Shiftshedule.js';
 import MiscMenues from './components/miscmenu/MiscMenu.js';
 import Footer from './components/footer/Footer';
 import Navbar from "./components/navbar/Navbar";
+import Login from "./logPortal/UserLogin";
 
 function App() {
   return (
     <div className="App">
       <Navbar />
       <header className="App-header">
+        <Login />
         <Overview />
         <Shiftshedule />
         <Newsslide />
         <MiscMenues />
         <Footer />
-      </header >
-    </div >
+      </header>
+    </div>
   );
 }
 
