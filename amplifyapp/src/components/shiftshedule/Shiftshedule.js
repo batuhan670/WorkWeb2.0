@@ -1,9 +1,5 @@
 import React from "react";
 import "./ShiftsheduleStyles.css";
-import { useSelector, useDispatch } from 'react-redux'
-import { incremented, decremented } from "../../stores/loginStore";
-
-
 
 const msinaDay = 86400000;
 let userLocale;
@@ -59,24 +55,11 @@ function makeWeek() {
     return shiftweek
 }
 
-function storeButtons(dispatch, count) {
-    return (
-        <div>
-            <button onClick={() => dispatch(incremented())}>Increment</button>
-            <button onClick={() => dispatch(decremented())}>Decrement</button>
-            <div>{count}</div>
-        </div>
-    );
-}
-
 //Schichtplan Export
 function Shiftshedule() {
-    const count = useSelector((state) => state.counter.value)
-    const dispatch = useDispatch()
     return (
         <div id="shiftshedule" >
             {makeWeek()}
-            {storeButtons(dispatch, count)}
         </div>
     );
 }

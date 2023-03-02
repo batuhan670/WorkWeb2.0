@@ -1,13 +1,16 @@
 import React from 'react';
 //import { useEffect, useState } from 'react';
 import "./OverviewStyles.css";
+import { useSelector, useDispatch } from 'react-redux'
+import { incremented, decremented } from "../../stores/loginStore";
 
 function Overview() {
-    const hours = -15;
-    function getHourColorStyle(number) {
+    const hourbalance = useSelector((state) => state.counter.value)
+    const dispatch = useDispatch();
+    function getHourColorStyle(hourbalance) {
         return {
             "backgroundColor":
-                "hsl(" + (60 + number) + ", " + (Math.ceil(Math.abs(number), 50) + 50) + "%, 50%"
+                "hsl(" + (60 + hourbalance) + ", " + (Math.ceil(Math.abs(hourbalance), 50) + 50) + "%, 50%"
         }
     };
 
@@ -29,7 +32,11 @@ function Overview() {
             style={{ 'marginTop': '150px' }}>
             <div className='overviewtable'>
                 <div className='tableName'>Aktuelle<br />Stunden</div>
-                <div className='tableContent'><div id="currentHours" style={getHourColorStyle(hours)}>{hours}</div></div>
+                <div className='tableContent'>
+                    <button onClick={() => dispatch(incremented())}>+</button>
+                    <div id="currentHours" style={getHourColorStyle(hourbalance)}>{hourbalance}</div>
+                    <button onClick={() => dispatch(decremented())}>-</button>
+                </div>
             </div>
             <div className='overviewtable'>
                 <div className='tableName'>Vorgesetzer</div>
