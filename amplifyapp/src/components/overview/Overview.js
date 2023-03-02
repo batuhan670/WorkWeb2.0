@@ -2,10 +2,12 @@ import React from 'react';
 //import { useEffect, useState } from 'react';
 import "./OverviewStyles.css";
 import { useSelector, useDispatch } from 'react-redux'
-import { incremented, decremented } from "../../stores/loginStore";
+import { incremented, decremented } from "../../stores/counterStore";
+import { login, logout } from "../../stores/loginStore";
 
 function Overview() {
-    const hourbalance = useSelector((state) => state.counter.value)
+    const hourbalance = useSelector((state) => state.counter.value);
+    const loggedIn = useSelector((state) => state.isloggedin.value) == true ? "User" : "Guest"
     const dispatch = useDispatch();
     function getHourColorStyle(hourbalance) {
         return {
@@ -46,6 +48,11 @@ function Overview() {
             <div className='overviewtable'>
                 <div className='tableName'>Facility<br />Manager</div>
                 <div className='tableContent'>Udo Jürgens</div>
+            </div>
+            <div className='overviewtable'>
+                <div className='tableName'>Hello {loggedIn}</div>
+                <button onClick={() => dispatch(login())}>Login</button>
+                <button onClick={() => dispatch(logout())}>Logout</button>
             </div>
         </div>
     )
