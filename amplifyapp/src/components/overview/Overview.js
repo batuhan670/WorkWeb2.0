@@ -7,7 +7,7 @@ import { login, logout } from "../../stores/loginStore";
 
 function Overview() {
     const hourbalance = useSelector((state) => state.counter.value);
-    const loggedIn = useSelector((state) => state.isloggedin.value) == true ? "User" : "Guest"
+    const loggedIn = useSelector((state) => state.isloggedin.value) === true ? "User" : "Guest"
     const dispatch = useDispatch();
     function getHourColorStyle(hourbalance) {
         return {
