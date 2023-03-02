@@ -19,9 +19,9 @@ import Adressbuch from './routes/Adressbuch.js'
 import PWaendern from './routes/PWaendern';
 import Urlaub from './routes/Urlaub';
 import DoctorsNote from './routes/DoctorsNote';
+import Login from "./logPortal/UserLogin";
 
 import Footer from './components/footer/Footer';
-import Navbar from "./components/navbar/Navbar";
 
 /*
 Fuer eventuelle Sprachspezifikation
@@ -47,7 +47,8 @@ const routes = createBrowserRouter([
       { path: "/addressbuch", element: <Adressbuch />, },
       { path: "/pwaendern", element: <PWaendern />, },
       { path: "/urlaub", element: <Urlaub />, },
-      { path: "/doctorsnote", element: <DoctorsNote />, }
+      { path: "/doctorsnote", element: <DoctorsNote />, },
+      { path: "/login", element: <Login />, }
     ]
   }
 ]);
