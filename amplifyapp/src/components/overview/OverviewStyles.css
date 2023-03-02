@@ -19,7 +19,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    
+
 
     border: var(--ovrvwBDpx) solid var(--scompClr);
     border-radius: 50%;
@@ -70,7 +70,7 @@
     background-color: var(--scompClr);
 
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     justify-content: center;
 
     transition-duration: inherit;
@@ -78,6 +78,21 @@
 
 .tableContent:hover {
     color: var(--scompClr);
+    background-color: var(--txtClr);
+    transform-box: border-box;
+}
+
+button {
+    font-size: larger;
+    color: var(--txtClr);
+    background-color: var(--scompClr);
+    border-style: solid;
+    border-color: var(--compClr);
+    border-radius: 5px;
+}
+
+button:hover {
+    color: var(--compClr);
     background-color: var(--txtClr);
     transform-box: border-box;
 }

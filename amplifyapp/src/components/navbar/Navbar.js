@@ -2,11 +2,11 @@ import "./NavbarStyles.css"
 
 import React, { useState } from 'react'
 import { Link } from "react-router-dom"
-
 import { FaBars, FaTimes } from "react-icons/fa";
+import { useSelector } from "react-redux";
 
 const Navbar = () => {
-
+    const loginName = useSelector((state) => state.isloggedin.value) === true ? "Benutzer xyz" : "Gast"
     const [click, setClick] = useState(false);
     const handleClick = () => setClick(!click);
 
@@ -27,13 +27,12 @@ const Navbar = () => {
     return (
         <div className={color ? "header header-bg" : "header"}>
             <Link to="/">
-                <h1>WorkWeb.</h1>
+                <h1>WorkWeb    Hallo {loginName}</h1>
             </Link>
-
-
             <Link>
                 <h1 className="xx">Abteilung</h1>
-            </Link> <div className="navbarAbteilung">
+            </Link>
+            <div className="navbarAbteilung">
             </div>
             <ul className={click ? "nav-menu active" : "nav-menu"}>
                 <li>

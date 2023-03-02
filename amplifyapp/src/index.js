@@ -1,34 +1,13 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import {
-  createBrowserRouter,
-  RouterProvider,
-} from "react-router-dom";
-
-import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
-import Adressbuch from './routes/Adressbuch.js'
-import PWaendern from './routes/PWaendern';
-import Urlaub from './routes/Urlaub';
-import DoctorsNote from './routes/DoctorsNote';
-
-/*
-Fuer eventuelle Sprachspezifikation
-const lang = navigator.language;
-*/
-const router = createBrowserRouter([
-  { path: "/", element: <App />, },
-  { path: "/addressbuch", element: <Adressbuch />, },
-  { path: "/pwaendern", element: <PWaendern />, },
-  { path: "/urlaub", element: <Urlaub />, },
-  { path: "/doctorsnote", element: <DoctorsNote />, },
-]);
+import './index.css';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <App />
   </React.StrictMode>
 );
 

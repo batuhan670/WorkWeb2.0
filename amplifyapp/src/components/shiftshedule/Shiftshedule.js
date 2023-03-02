@@ -2,42 +2,66 @@ import React from "react";
 import "./ShiftsheduleStyles.css";
 
 const msinaDay = 86400000;
-const userLocale = navigator.languages && navigator.languages.length ? navigator.languages[0] : navigator.language;
+let userLocale;
+
+userLocale = navigator.languages && navigator.languages.length ? navigator.languages[0] : navigator.language;
+
 //Benennung Wochentage
-function localeDayNames() {
+function localeDayNames(size) {
     let weekDayNames = new Array(6);
     for (let index = 0; index < 7; index++) {
-        weekDayNames[index] = new Date((index + 4) * msinaDay).toLocaleDateString(userLocale, { weekday: 'short' });
+        weekDayNames[index] = new Date((index + 4) * msinaDay).toLocaleDateString(userLocale, { weekday: size });
     }
     return weekDayNames;
 }
-const Weekdays = localeDayNames();
-//["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
+//Week day name length
+const WDNLL = localeDayNames("long");
+const WDNLS = localeDayNames("short");
+
+/*
+function weekdayNameLengthDecision(x) {
+    if (x.matches) {
+        console.log("Short weekday names")
+    } else {
+        console.log("Long weekday names")
+    }
+}
+*/
+
+
+let mediaSize = window.matchMedia("(max-width: 700px)");
 
 //Arbeitsstunden
 const WorkHoursStart = ["04:00", "04:00", "04:00", "04:00", "04:00", "-", "-"];
 const WorkHoursEnd = ["12:00", "12:00", "12:00", "12:00", "12:00", "-", "-"];
 
+
 //DivElement fuer jeden Tag.
 function getDay(dayName, shiftStart, shiftEnd, number) {
-    return <div className="day">
+    return <div className="day" key={dayName + number}>
         <div className="dayName">{dayName[number]}</div>
         <div className="dH dHTop">{shiftStart[number]}</div>
         <div className="dH dHBot">{shiftEnd[number]}</div>
     </div>
 };
 
+//Div Element fuer die Woche
+function makeWeek() {
+    let shiftweek = new Array(6);
+    let weekDayNameLength = mediaSize.matches ? WDNLS : WDNLL;
+    for (let index = 0; index < 7; index++) {
+        shiftweek[index] = getDay(weekDayNameLength, WorkHoursStart, WorkHoursEnd, index);
+    }
+    return shiftweek
+}
+
+//Schichtplan Export
 function Shiftshedule() {
     return (
         <div id="shiftshedule" >
-            {getDay(Weekdays, WorkHoursStart, WorkHoursEnd, 0)}
-            {getDay(Weekdays, WorkHoursStart, WorkHoursEnd, 1)}
-            {getDay(Weekdays, WorkHoursStart, WorkHoursEnd, 2)}
-            {getDay(Weekdays, WorkHoursStart, WorkHoursEnd, 3)}
-            {getDay(Weekdays, WorkHoursStart, WorkHoursEnd, 4)}
-            {getDay(Weekdays, WorkHoursStart, WorkHoursEnd, 5)}
-            {getDay(Weekdays, WorkHoursStart, WorkHoursEnd, 6)}
-        </div>)
+            {makeWeek()}
+        </div>
+    );
 }
 
 export default Shiftshedule;
