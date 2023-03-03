@@ -4,9 +4,8 @@ import React, { useState } from 'react'
 import { Link } from "react-router-dom"
 import { FaBars, FaTimes } from "react-icons/fa";
 import { useSelector } from "react-redux";
-
 const Navbar = () => {
-    const loginName = useSelector((state) => state.isloggedin.value) === true ? "Benutzer xyz" : "Gast"
+    const loginName = useSelector((state) => state.isloggedin.value) === true ? "Benutzer" : "Gast"
     const [click, setClick] = useState(false);
     const handleClick = () => setClick(!click);
 

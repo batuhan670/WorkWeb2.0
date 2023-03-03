@@ -4,7 +4,7 @@ const cors = require('cors');
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const session = require('express-session');
-const bcrypt = require('bcrypt');
+const bcrypt = require('bcryptjs');
 const bodyParser = require('body-parser');
 
 const app = express();
@@ -13,8 +13,8 @@ app.use(express.json());
 
 const connection = mysql.createConnection({
   host: 'localhost',
-  user: 'root',
-  password: 'Alperen5858',
+  user: 'arbeitsplanung',
+  password: 'arbeitsplanung',
   database: 'workwebdb'
 });
 
