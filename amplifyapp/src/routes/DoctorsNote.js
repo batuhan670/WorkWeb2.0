@@ -1,5 +1,7 @@
 import React from 'react'
 import DoctorForm from '../components/doctorForms/DoctorForm.js';
+import ShiftSchedule from '../components/Schichtplan/ShiftSchedule.js';
+import ShiftScheduleBanner from '../components/Schichtplan/ShiftScheduleBanner.js';
 import Data from '../data/Data.js';
 import EmployeeHours from '../data/Employee_hours.js';
 
@@ -9,6 +11,8 @@ function DoctorsNote() {
     <div>
       <EmployeeHours />
       <Data />
+      <ShiftScheduleBanner />
+      <ShiftSchedule />
     </div>
   )
 }

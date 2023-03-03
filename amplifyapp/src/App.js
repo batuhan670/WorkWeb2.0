@@ -1,7 +1,6 @@
 import React from "react";
 import './AppStyles.css';
-import Topline from "./components/topline/Topline.js"
-import logo from './logo.svg';
+
 import Overview from "./components/overview/Overview.js"
 import Newsslide from './components/newsslide/Newsslide.js';
 import Shiftshedule from './components/shiftshedule/Shiftshedule.js';
@@ -13,7 +12,7 @@ import Login from "./logPortal/UserLogin";
 function App() {
   return (
     <div className="App">
-      <Navbar />
+
       <header className="App-header">
         <Login />
         <Overview />

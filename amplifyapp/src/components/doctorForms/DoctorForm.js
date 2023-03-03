@@ -1,6 +1,6 @@
 import React, { useRef } from 'react';
 import emailjs from '@emailjs/browser';
-import  "./DoctorFormStyles.css";
+import "./DoctorFormStyles.css";
 
 
 
@@ -39,7 +39,7 @@ const Forms = () => {
         <input type="email" name="user_email" />
         <label>Nachricht</label>
         <label className='error' > </label>
-        <input type = "file" name='file'></input>
+        <input type="file" name='file'></input>
         <textarea name="message" rows="6" placeholder='Begründung für die Arbeitsunfähigkeit' />
         <input type="submit" value="Senden" className='btn' />
       </form>
