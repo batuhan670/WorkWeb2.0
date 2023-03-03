@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { API_URL } from '../constants';
 import './UserLoginStyles.css'
 
 function Login() {
@@ -8,7 +9,7 @@ function Login() {
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-            const response = await fetch('http://localhost:3000', {
+            const response = await fetch(API_URL + "/auth", {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
