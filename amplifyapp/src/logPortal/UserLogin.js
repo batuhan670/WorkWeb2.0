@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { API_URL } from '../constants';
+import { login } from '../api/api';
 import './UserLoginStyles.css'
 
 function Login() {
@@ -9,24 +9,12 @@ function Login() {
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-            const response = await fetch(API_URL + "/auth", {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({ email, password }),
-            });
-            if (response.ok) {
-                // Login war erfolgreich
-                console.log('Login successful');
-            } else {
-                console.error('Login failed');
-            }
+            const user = await login(email, password)
+            console.log("Logged in user: " + JSON.stringify(user))
         } catch (error) {
             console.error(error);
         }
     };
-
 
     return (
         <form onSubmit={handleSubmit}>
