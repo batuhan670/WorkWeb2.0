@@ -22,8 +22,8 @@ if (!process.env.DB_URL || !process.env.DB_USERNAME || !process.env.DB_PASSWORD 
 const connection = mysql.createConnection({
   host: process.env.URL,
   user: process.env.DB_USERNAME,
-  password: process.env.DB_USERNAME,
-  database: process.env.DB_PASSWORD
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_DATABASE
 });
 
 connection.connect((error) => {
