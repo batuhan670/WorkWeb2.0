@@ -7,15 +7,23 @@ const session = require('express-session');
 const bcrypt = require('bcryptjs');
 const bodyParser = require('body-parser');
 
+const dotenv = require('dotenv');
+dotenv.config();
+
 const app = express();
 app.use(cors());
 app.use(express.json());
 
+if (!process.env.DB_URL || !process.env.DB_USERNAME || !process.env.DB_PASSWORD || !process.env.DB_DATABASE) {
+  console.log("Create .env file: with DB_URL=..., DB_USERNAME=..., DB_PASSWORD=..., DB_DATABASE=...")
+  process.exit(1)
+}
+
 const connection = mysql.createConnection({
-  host: 'localhost',
-  user: 'arbeitsplanung',
-  password: 'arbeitsplanung',
-  database: 'workwebdb'
+  host: process.env.URL,
+  user: process.env.DB_USERNAME,
+  password: process.env.DB_USERNAME,
+  database: process.env.DB_PASSWORD
 });
 
 connection.connect((error) => {
