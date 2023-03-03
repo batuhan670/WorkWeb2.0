@@ -1,15 +1,19 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { login } from '../api/api';
 import './UserLoginStyles.css'
+import { setUser } from '../stores/userStore';
 
 function Login() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
+    const dispatch = useDispatch()
 
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
             const user = await login(email, password)
+            dispatch(setUser(user))
             console.log("Logged in user: " + JSON.stringify(user))
         } catch (error) {
             console.error(error);

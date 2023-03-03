@@ -4,11 +4,11 @@ import Shiftshedule from '../components/shiftshedule/Shiftshedule.js';
 import MiscMenues from '../components/miscmenu/MiscMenu.js';
 import Login from "../logPortal/UserLogin.js";
 import { useSelector, useDispatch } from 'react-redux'
-import { login, logout } from "../stores/loginStore";
+import { setUser, clearUser } from "../stores/userStore";
 
 function MainPage() {
     const dispatch = useDispatch();
-    if (useSelector((state) => state.isloggedin.value))
+    if (useSelector((state) => state.user.value))
         return (
             <div>
                 <Overview />
@@ -20,8 +20,8 @@ function MainPage() {
         return (
             <div>
                 <Login />
-                <button onClick={() => dispatch(login())}>Force Login</button>
-                <button onClick={() => dispatch(logout())}>Logout</button>
+                <button onClick={() => dispatch(setUser({}))}>Force Login</button>
+                <button onClick={() => dispatch(clearUser())}>Logout</button>
             </div>
         );
 }

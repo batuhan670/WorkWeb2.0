@@ -5,7 +5,7 @@ import { Link } from "react-router-dom"
 import { FaBars, FaTimes } from "react-icons/fa";
 import { useSelector } from "react-redux";
 const Navbar = () => {
-    const loginName = useSelector((state) => state.isloggedin.value) === true ? "Benutzer" : "Gast"
+    const user = useSelector((state) => state.user.value)
     const [click, setClick] = useState(false);
     const handleClick = () => setClick(!click);
 
@@ -23,10 +23,18 @@ const Navbar = () => {
 
     window.addEventListener("scroll", changeColor);
 
+    function showUser() {
+        if (user != null) {
+            return (<h1>WorkWeb - Hallo {user.name}</h1>)
+        } else {
+            return (<h1>WorkWeb - Hallo Gast</h1>)
+        }
+    }
+
     return (
         <div className={color ? "header header-bg" : "header"}>
             <Link to="/">
-                <h1>WorkWeb    Hallo {loginName}</h1>
+                {showUser()}
             </Link>
             <Link>
                 <h1 className="xx">Abteilung</h1>
