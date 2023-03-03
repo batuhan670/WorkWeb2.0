@@ -1,3 +1,4 @@
+const morgan = require('morgan');
 const express = require('express');
 const cors = require('cors');
 const dotenv = require('dotenv');
@@ -10,6 +11,8 @@ app.use(express.json());
 const { init } = require('./auth/auth')
 
 init(app)
+
+app.use(morgan('dev'));
 
 // Middleware für Routen-Präfix
 const router = express.Router();
