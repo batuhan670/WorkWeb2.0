@@ -54,7 +54,7 @@ const EmployeeShifts = () => {
         };
 
         axios
-            .post("http://localhost:3000/api/shift_schedule", shiftData)
+            .post("http://localhost:3000/api/employees/" + employeeId + "/shift_schedule", shiftData)
             .then((response) => {
                 console.log(response.data);
             });

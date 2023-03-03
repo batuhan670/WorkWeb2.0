@@ -8,7 +8,8 @@ import { setUser, clearUser } from "../stores/userStore";
 
 function MainPage() {
     const dispatch = useDispatch();
-    if (useSelector((state) => state.user.value))
+    const user = useSelector((state) => state.user.user);
+    if (user != null)
         return (
             <div>
                 <Overview />

@@ -13,6 +13,20 @@ router.get('/', (req, res) => {
     });
 })
 
+router.get('/:employee_id', (req, res) => {
+    connection.query('SELECT * FROM employees where id = ?', [req.params.employee_id], function (error, results) {
+        if (error) {
+            res.sendStatus(500);
+        } else {
+            if (results.length > 0) {
+                res.json(results[0]);
+            } else {
+                res.sendStatus(404);
+            }
+        }
+    });
+})
+
 // Route für das Erstellen eines Benutzers
 router.post('/', (req, res) => {
     const { email, password, name, phone, department, position, manager_IDemployees } = req.body;
@@ -51,7 +65,7 @@ router.post('/:employeeId/hours', (req, res) => {
     console.log(req.body)
     const { startTime, workDate, stopTime, totalHours } = req.body;
 
-    const employee_id = req.path.employeeId;
+    const employee_id = req.params.employeeId;
 
     const query = `
       INSERT INTO employee_hours (employee_id, work_date, start_time, stop_time, total_hours)
@@ -74,7 +88,7 @@ router.post('/:employeeId/shift_schedule', (req, res) => {
     console.log(req.body)
     const { shift_type, start_date, start_time, end_date, end_time } = req.body;
 
-    const employee_id = req.path.employeeId;
+    const employee_id = req.params.employeeId;
 
     const query = `
       INSERT INTO shift_schedule (employee_id, shift_type, start_date, start_time, end_date, end_time)

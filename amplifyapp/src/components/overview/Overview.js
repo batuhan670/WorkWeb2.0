@@ -3,26 +3,48 @@ import { useEffect, useState } from 'react';
 import "./OverviewStyles.css";
 import { useSelector, useDispatch } from 'react-redux'
 import { incremented, decremented } from "../../stores/counterStore";
+import { getEmployeeById } from '../../api/api';
+import { setManager } from '../../stores/userStore';
 
 function Overview() {
     const dispatch = useDispatch();
     const hourbalance = useSelector((state) => state.counter.value);
+    const user = useSelector((state) => state.user.user);
+    const manager = useSelector((state) => state.user.manager);
+
+    useEffect(() => {
+        const load = async () => {
+            try {
+                const manager = await getEmployeeById(user.payload.manager_IDemployees);
+                dispatch(setManager(manager))
+            } catch (err) {
+                console.log(err);
+            }
+        }
+        if (user.payload.manager) {
+            load()
+        }
+    }, [user])
+
+    function managedBy() {
+        if (manager == null) {
+            return (<></>)
+        } else {
+            return (
+                <div className='overviewtable'>
+                    <div className='tableName'>Vorgesetzer</div>
+                    <div className='tableContent'> {manager.payload.name}</div>
+                </div>
+            );
+        }
+    }
+
     function getHourColorStyle(number) {
         return {
             "backgroundColor":
                 "hsl(" + (60 + number) + ", " + (Math.ceil(Math.abs(number), 50) + 50) + "%, 50%"
         }
     };
-    const [userData, setUserData] = useState();
-
-    useEffect(() => {
-        async function loadData() {
-            const result = await fetch("http://localhost:3000/api/employees/1")
-            const userData = await result.json()
-            setUserData(userData)
-        }
-        loadData()
-    }, [])
 
     return (
         <div id='overview'
@@ -36,10 +58,7 @@ function Overview() {
                     <button onClick={() => dispatch(decremented())}>-</button>
                 </div>
             </div>
-            <div className='overviewtable'>
-                <div className='tableName'>Vorgesetzer</div>
-                <div className='tableContent'> {userData?.manager}</div>
-            </div>
+            {managedBy()}
             <div className='overviewtable'>
                 <div className='tableName'>Facility<br />Manager</div>
                 <div className='tableContent'>Udo Jürgens</div>

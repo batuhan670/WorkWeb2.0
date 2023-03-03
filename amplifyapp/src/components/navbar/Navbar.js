@@ -3,9 +3,12 @@ import "./NavbarStyles.css"
 import React, { useState } from 'react'
 import { Link } from "react-router-dom"
 import { FaBars, FaTimes } from "react-icons/fa";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { clearUser } from "../../stores/userStore";
+
 const Navbar = () => {
-    const user = useSelector((state) => state.user.value)
+    const dispatch = useDispatch();
+    const user = useSelector((state) => state.user.user)
     const [click, setClick] = useState(false);
     const handleClick = () => setClick(!click);
 
@@ -23,9 +26,20 @@ const Navbar = () => {
 
     window.addEventListener("scroll", changeColor);
 
+    function logoutButton() {
+        if (user == null) {
+            return <></>
+        }
+        return (
+            <li>
+                <button onClick={() => dispatch(clearUser())}>Logout</button>
+            </li>
+        );
+    }
+
     function showUser() {
         if (user != null) {
-            return (<h1>WorkWeb - Hallo {user.name}</h1>)
+            return (<h1>WorkWeb - Hallo {user.payload.name}</h1>)
         } else {
             return (<h1>WorkWeb - Hallo Gast</h1>)
         }
@@ -54,6 +68,7 @@ const Navbar = () => {
                 <li>
                     <Link to="/Kontakte">Kontakt</Link>
                 </li>
+                {logoutButton()}
                 <li className="parentMenu">
                     <a href="#" onClick={activateSubMenu}>Einstellungen</a>
                     <div className={submenuActive ? "submenu active" : "submenu"}>
