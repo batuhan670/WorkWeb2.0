@@ -1,48 +1,55 @@
-import React, { useState } from 'react';
-import moment from 'moment';
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 
-const ShiftScheduleBanner = () => {
-    const [shiftCycle, setShiftCycle] = useState('');
-    const [workDays, setWorkDays] = useState([]);
+const EmployeeScheduleBanner = ({ employeeId }) => {
+    const [weekSchedule, setWeekSchedule] = useState([]);
 
-    const handleSubmit = (event) => {
-        event.preventDefault();
+    useEffect(() => {
+        const fetchWeekSchedule = async () => {
+            try {
+                // Berechne Start- und Enddatum für den Zeitraum der nächsten 7 Tage
+                const today = new Date();
+                const daysToMonday = (today.getDay() + 6) % 7; // Distanz zu Montag
+                const monday = new Date(today.getFullYear(), today.getMonth(), today.getDate() - daysToMonday);
+                const sunday = new Date(monday.getFullYear(), monday.getMonth(), monday.getDate() + 6);
 
-        // Schichtzyklus in Tage umwandeln
-        const days = shiftCycle.split(',').map((day) => day.trim());
+                // Hole Arbeitszeiten für den Mitarbeiter für den Zeitraum von Montag bis Sonntag
+                console.log(employeeId)
+                const response = await axios.get(`http://localhost:3000/api/employees/${employeeId}/shift_schedule`, {
+                    params: {
+                        start_date: monday.toISOString().split("T")[0],
+                        end_date: sunday.toISOString().split("T")[0],
+                    },
+                });
 
-        // Arbeitstage berechnen
-        const workDays = [];
-        let currentDate = moment();
-        for (let i = 0; i < 5; i++) {
-            while (!days.includes(currentDate.format('ddd'))) {
-                currentDate = currentDate.add(1, 'day');
+                // Setze den Wochenplan für den Mitarbeiter
+                setWeekSchedule(response.data);
+            } catch (error) {
+                console.error(error);
             }
-            workDays.push(currentDate.format('ddd, MMM D'));
-            currentDate = currentDate.add(1, 'day');
-        }
-        setWorkDays(workDays);
-    };
+        };
+
+        fetchWeekSchedule();
+    }, [employeeId]);
+
+    const daysOfWeek = ["Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag", "Sonntag"];
 
     return (
-        <div>
-            <form onSubmit={handleSubmit}>
-                <label>
-                    Schichtzyklus:
-                    <input type="text" value={shiftCycle} onChange={(e) => setShiftCycle(e.target.value)} />
-                </label>
-                <button type="submit">Submit</button>
-            </form>
-            <div>
-                Nächste Arbeitstage:
+        <div className="employee-schedule-banner">
+            <h2>Arbeitszeiten für die nächste Woche</h2>
+            {weekSchedule.length > 0 ? (
                 <ul>
-                    {workDays.map((day) => (
-                        <li key={day}>{day}</li>
+                    {weekSchedule.map((shift, index) => (
+                        <li key={shift.id}>
+                            {daysOfWeek[index]}: {shift.start_time} - {shift.end_time}
+                        </li>
                     ))}
                 </ul>
-            </div>
+            ) : (
+                <p>Keine Arbeitszeiten für die nächste Woche gefunden.</p>
+            )}
         </div>
     );
 };
 
-export default ShiftScheduleBanner;
+export default EmployeeScheduleBanner;

@@ -9,8 +9,9 @@ import EmployeeHours from '../data/Employee_hours.js';
 function DoctorsNote() {
   return (
     <div>
-      <EmployeeHours />
+
       <Data />
+      <EmployeeHours />
       <ShiftScheduleBanner />
       <ShiftSchedule />
     </div>
