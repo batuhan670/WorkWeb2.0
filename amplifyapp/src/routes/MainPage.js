@@ -9,6 +9,11 @@ import { setUser } from "../stores/userStore";
 function MainPage() {
     const dispatch = useDispatch();
     const user = useSelector((state) => state.user.user);
+    const forcedUser = {
+        id: 3, email: "Mc@Test.net", password: "3",
+        name: "McTest", phone: "0815 4711", department: "IT",
+        position: "Dummy", manager_IDemployees: 1, created_at: "2023-03-03T09:42:45.000Z"
+    }
     if (user != null)
         return (
             <div>
@@ -21,7 +26,7 @@ function MainPage() {
         return (
             <div>
                 <Login />
-                <button onClick={() => dispatch(setUser({}))}>Force Login</button>
+                <button onClick={() => dispatch(setUser(forcedUser))}>Force Login</button>
             </div>
         );
 }
