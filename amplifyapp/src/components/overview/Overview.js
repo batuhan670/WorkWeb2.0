@@ -21,7 +21,7 @@ function Overview() {
                 console.log(err);
             }
         }
-        if (user.payload.manager) {
+        if (!user.payload.manager) {
             load()
         }
     }, [user])
@@ -30,10 +30,11 @@ function Overview() {
         if (manager == null) {
             return (<></>)
         } else {
+            const managerName = manager.payload.name.split(/\s+/)
             return (
                 <div className='overviewtable'>
                     <div className='tableName'>Vorgesetzer</div>
-                    <div className='tableContent'> {manager.payload.name}</div>
+                    <div className='tableContent'> {managerName[0]}<br />{managerName[1]}</div>
                 </div>
             );
         }

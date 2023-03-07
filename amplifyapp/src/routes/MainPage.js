@@ -4,7 +4,7 @@ import Shiftshedule from '../components/shiftshedule/Shiftshedule.js';
 import MiscMenues from '../components/miscmenu/MiscMenu.js';
 import Login from "../logPortal/UserLogin.js";
 import { useSelector, useDispatch } from 'react-redux'
-import { setUser, clearUser } from "../stores/userStore";
+import { setUser } from "../stores/userStore";
 
 function MainPage() {
     const dispatch = useDispatch();
@@ -22,7 +22,6 @@ function MainPage() {
             <div>
                 <Login />
                 <button onClick={() => dispatch(setUser({}))}>Force Login</button>
-                <button onClick={() => dispatch(clearUser())}>Logout</button>
             </div>
         );
 }
