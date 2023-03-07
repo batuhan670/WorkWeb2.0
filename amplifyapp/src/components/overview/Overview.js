@@ -1,10 +1,7 @@
 import React from 'react';
-import { useEffect, useState } from 'react';
 import "./OverviewStyles.css";
 import { useSelector, useDispatch } from 'react-redux'
 import { incremented, decremented } from "../../stores/counterStore";
-import { getEmployeeById } from '../../api/api';
-import { setManager } from '../../stores/userStore';
 
 function Overview() {
     const dispatch = useDispatch();
@@ -12,19 +9,7 @@ function Overview() {
     const user = useSelector((state) => state.user.user);
     const manager = useSelector((state) => state.user.manager);
 
-    useEffect(() => {
-        const load = async () => {
-            try {
-                const manager = await getEmployeeById(user.payload.manager_IDemployees);
-                dispatch(setManager(manager))
-            } catch (err) {
-                console.log(err);
-            }
-        }
-        if (!user.payload.manager) {
-            load()
-        }
-    }, [user])
+
 
     function managedBy() {
         if (manager == null) {
