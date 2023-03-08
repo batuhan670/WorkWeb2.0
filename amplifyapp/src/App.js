@@ -22,7 +22,8 @@ import DoctorsNote from './routes/DoctorsNote';
 import Login from "./logPortal/UserLogin";
 
 import Footer from './components/footer/Footer';
-import EmployeeShifts from "./components/Schichtplan/ShiftSchedule";
+
+import EmployeeScheduleBanner from "./components/schichtplan/ShiftScheduleBanner";
 
 /*
 Fuer eventuelle Sprachspezifikation
@@ -35,6 +36,7 @@ const Layout = () => {
         <Navbar />
         <header className="App-header">
           <Outlet />
+          <EmployeeScheduleBanner />
         </header >
         <Footer />
       </div >
@@ -50,7 +52,7 @@ const routes = createBrowserRouter([
       { path: "/urlaub", element: <Urlaub />, },
       { path: "/doctorsnote", element: <DoctorsNote />, },
       { path: "/login", element: <Login />, },
-      { path: "/schedule_planner", element: <EmployeeShifts />, }
+      /* { path: "/schedule_planner", element: </>, }*/
     ]
   }
 ]);

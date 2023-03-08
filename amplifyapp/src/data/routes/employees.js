@@ -1,7 +1,10 @@
 const express = require('express');
-
 const router = express.Router()
 const connection = require('../database/db')
+const multer = require('multer');
+const nodemailer = require('nodemailer');
+const mysql = require('mysql2/promise');
+const app = express();
 
 router.get('/', (req, res) => {
     connection.query('SELECT * FROM employees', function (error, results) {
@@ -84,6 +87,22 @@ router.post('/:employeeId/hours', (req, res) => {
     });
 });
 
+router.get('/:employeeId/shift_schedule', (req, res) => {
+    const employee_id = req.params.employeeId;
+
+    const query = `
+      SELECT * FROM shift_schedule WHERE employee_id = ?
+    `;
+
+    connection.query(query, [employee_id], function (error, results) {
+        if (error) {
+            res.status(500).send('Error saving data to database');
+            return;
+        }
+        res.json(results);
+    });
+});
+
 router.post('/:employeeId/shift_schedule', (req, res) => {
     console.log(req.body)
     const { shift_type, start_date, start_time, end_date, end_time } = req.body;
@@ -107,5 +126,10 @@ router.post('/:employeeId/shift_schedule', (req, res) => {
         res.status(201).send('Shift added successfully');
     });
 });
+
+
+
+
+
 
 module.exports = router

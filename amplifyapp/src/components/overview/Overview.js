@@ -5,6 +5,7 @@ import { useSelector, useDispatch } from 'react-redux'
 import { incremented, decremented } from "../../stores/counterStore";
 import { getEmployeeById } from '../../api/api';
 import { setManager } from '../../stores/userStore';
+import ClockIn from '../../data/Employee_hours';
 
 function Overview() {
     const dispatch = useDispatch();
@@ -21,7 +22,7 @@ function Overview() {
                 console.log(err);
             }
         }
-        if (user.payload.manager) {
+        if (!user.payload.manager) {
             load()
         }
     }, [user])
@@ -56,6 +57,7 @@ function Overview() {
                     <button onClick={() => dispatch(incremented())}>+</button>
                     <div id="currentHours" style={getHourColorStyle(hourbalance)}>{hourbalance}</div>
                     <button onClick={() => dispatch(decremented())}>-</button>
+                    <div className="hourss"> <ClockIn /></div>
                 </div>
             </div>
             {managedBy()}

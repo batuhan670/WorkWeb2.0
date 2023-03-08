@@ -1,74 +1,55 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
-import { SERVER_BASE_URL } from './constants';
+import { useSelector } from 'react-redux';
+import addHours from './AddHours'
 
-const EmployeeHours = ({ employeeId }) => {
-    const [startTime, setStartTime] = useState(null);
-    const [stopTime, setStopTime] = useState(null);
-    const [elapsedTime, setElapsedTime] = useState(0);
-    const [totalHours, setTotalHours] = useState(0);
-    const [isRunning, setIsRunning] = useState(false);
+const ClockIn = () => {
+    const employeeId = useSelector(state => state.user.user.payload.id);
+    const user = useSelector(state => state.user.user.payload);
+    const [clockInTime, setClockInTime] = useState(null);
+    const [clockOutTime, setClockOutTime] = useState(null);
+    const [totalHours, setTotalHours] = useState('00:00:00');
+    const [todayHours, setTodayHours] = useState('00:00:00');
 
-    const employeeID = useSelector((state) => state.user.id);
-
-    useEffect(() => {
-        if (startTime && stopTime) {
-            const timeDiff = stopTime - startTime;
-            setElapsedTime(timeDiff);
-            setTotalHours(totalHours + timeDiff / (1000 * 60 * 60));
-        }
-    }, [startTime, stopTime]);
-
-    const handleStartClick = () => {
-        if (!isRunning) {
-            setStartTime(Date.now());
-            setIsRunning(true);
-        }
+    const handleClockIn = async () => {
+        setClockInTime(new Date());
+        setClockOutTime(null);
     };
 
-    const handleStopClick = () => {
-        if (isRunning) {
-            setStopTime(Date.now());
-            setIsRunning(false);
-        }
-    };
-
-    const handleSaveClick = () => {
-        axios
-            .post(`${SERVER_BASE_URL}/employees/${employeeId}/hours`, {
-                startTime,
-                stopTime,
-                totalHours,
-            })
-            .then((res) => {
-                console.log(res);
-                console.log(res.data);
-            })
-            .catch((error) => {
-                console.error(error);
+    const handleClockOut = async () => {
+        if (clockInTime) {
+            console.log("User clock: " + JSON.stringify(user))
+            setClockOutTime(new Date());
+            const timeDiff = clockOutTime ? clockOutTime.getTime() - clockInTime.getTime() : new Date().getTime() - clockInTime.getTime();
+            const hours = addHours(totalHours, addHours('00:00:00', new Date(timeDiff).toISOString().substr(11, 8)));
+            setTotalHours(hours);
+            const today = new Date().toISOString().substr(0, 10);
+            const response = await axios.post(`http://localhost:3000/api/employee_hours/${employeeId}`, {
+                work_date: today,
+                start_time: clockInTime.toISOString().substr(11, 8),
+                stop_time: clockOutTime.toISOString().substr(11, 8),
+                total_hours: hours,
             });
+            const todayData = response.data.find(data => data.work_date === today);
+            setTodayHours(todayData ? todayData.total_hours : '00:00:00');
+        }
     };
 
     return (
         <div>
+            <h2>Stempeluhr</h2>
             <div>
-                <button onClick={handleStartClick} disabled={isRunning}>
-                    Start
-                </button>
-                <button onClick={handleStopClick} disabled={!isRunning}>
-                    Stop
-                </button>
+                <button onClick={handleClockIn} disabled={clockInTime && !clockOutTime}>Kommen</button>
+                <button onClick={handleClockOut} disabled={!clockInTime}>Gehen</button>
             </div>
             <div>
-                Elapsed Time:{' '}
-                {elapsedTime
-                    ? (elapsedTime / (1000 * 60 * 60)).toFixed(2) + ' hours'
-                    : 'N/A'}
+                Gesamtarbeitszeit: {totalHours}
             </div>
-            <div>Total Hours: {totalHours.toFixed(2)} hours</div>
-            <button onClick={handleSaveClick}>Save</button>
+            <div>
+                Arbeitszeit heute: {todayHours}
+            </div>
         </div>
     );
 };
 
-export default EmployeeHours;
+export default ClockIn;
