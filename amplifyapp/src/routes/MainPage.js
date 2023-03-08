@@ -1,10 +1,11 @@
 import Overview from "../components/overview/Overview.js"
 //import Newsslide from '../components/newsslide/Newsslide.js';
-import Shiftshedule from '../components/shiftshedule/Shiftshedule.js';
+import Schiftshedule from '../components/shiftschedule/Shiftschedule.js';
 import MiscMenues from '../components/miscmenu/MiscMenu.js';
 import Login from "../logPortal/UserLogin.js";
 import { useSelector, useDispatch } from 'react-redux'
 import { setUser, clearUser } from "../stores/userStore";
+import EmployeeScheduleBanner from "../components/Schichtplan/ShiftScheduleBanner.js";
 
 function MainPage() {
     const dispatch = useDispatch();
@@ -13,7 +14,8 @@ function MainPage() {
         return (
             <div>
                 <Overview />
-                <Shiftshedule />
+                <Schiftshedule />
+                <EmployeeScheduleBanner />
                 <MiscMenues />
             </div>
         );
@@ -26,4 +28,7 @@ function MainPage() {
             </div>
         );
 }
+
+//
+
 export default MainPage;
