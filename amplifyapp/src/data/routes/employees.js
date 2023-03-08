@@ -64,26 +64,23 @@ router.post('/', (req, res) => {
 });
 
 // Schichtplan Stundentafel
-router.post('/:employeeId/hours', (req, res) => {
+router.post('/:employeeId/employee_hours', (req, res) => {
+    const employeeId = req.params.employeeId;
+    const { workDate, startTime, stopTime, totalHours } = req.body;
     console.log(req.body)
-    const { startTime, workDate, stopTime, totalHours } = req.body;
-
-    const employee_id = req.params.employeeId;
 
     const query = `
       INSERT INTO employee_hours (employee_id, work_date, start_time, stop_time, total_hours)
       VALUES (?, ?, ?, ?, ?)
     `;
 
-    console.log(employee_id)
-
-    connection.query(query, [employee_id, workDate, startTime, stopTime, totalHours], function (error, results) {
-        if (error) {
-            console.error(error);
+    connection.query(query, [employeeId, workDate, startTime, stopTime, totalHours], (err, result) => {
+        if (err) {
+            console.error(err);
             res.status(500).send('Error saving data to database');
-            return;
+        } else {
+            res.status(201).send('Shift added successfully');
         }
-        res.status(201).send('Shift added successfully');
     });
 });
 
