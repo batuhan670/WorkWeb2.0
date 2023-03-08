@@ -1,33 +1,6 @@
 import React from "react";
+import { daysOfWeekShort as WDNLL, daysOfWeekLong as WDNLS } from "../../constants";
 import "./ShiftsheduleStyles.css";
-
-const msinaDay = 86400000;
-let userLocale;
-
-userLocale = navigator.languages && navigator.languages.length ? navigator.languages[0] : navigator.language;
-
-//Benennung Wochentage
-function localeDayNames(size) {
-    let weekDayNames = new Array(6);
-    for (let index = 0; index < 7; index++) {
-        weekDayNames[index] = new Date((index + 4) * msinaDay).toLocaleDateString(userLocale, { weekday: size });
-    }
-    return weekDayNames;
-}
-//Week day name length
-const WDNLL = localeDayNames("long");
-const WDNLS = localeDayNames("short");
-
-/*
-function weekdayNameLengthDecision(x) {
-    if (x.matches) {
-        console.log("Short weekday names")
-    } else {
-        console.log("Long weekday names")
-    }
-}
-*/
-
 
 let mediaSize = window.matchMedia("(max-width: 700px)");
 

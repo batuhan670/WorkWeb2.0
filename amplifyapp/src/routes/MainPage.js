@@ -5,6 +5,7 @@ import MiscMenues from '../components/miscmenu/MiscMenu.js';
 import Login from "../logPortal/UserLogin.js";
 import { useSelector, useDispatch } from 'react-redux'
 import { setUser, clearUser } from "../stores/userStore";
+import EmployeeScheduleBanner from "../components/Schichtplan/ShiftScheduleBanner.js";
 
 function MainPage() {
     const dispatch = useDispatch();
@@ -14,6 +15,7 @@ function MainPage() {
             <div>
                 <Overview />
                 <Shiftshedule />
+                <EmployeeScheduleBanner />
                 <MiscMenues />
             </div>
         );
