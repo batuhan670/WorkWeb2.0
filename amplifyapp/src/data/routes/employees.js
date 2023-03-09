@@ -5,6 +5,9 @@ const multer = require('multer');
 const nodemailer = require('nodemailer');
 const mysql = require('mysql2/promise');
 const app = express();
+const bcrypt = require('bcrypt');
+
+
 
 router.get('/', (req, res) => {
     connection.query('SELECT * FROM employees', function (error, results) {
@@ -35,6 +38,7 @@ router.post('/', (req, res) => {
     const { email, password, name, phone, department, position, manager_IDemployees } = req.body;
     console.log('text', req.body)
     // Hash des Passworts generieren
+
     bcrypt.hash(password, 10, function (error, hash) {
         if (error) {
             console.error(error);
