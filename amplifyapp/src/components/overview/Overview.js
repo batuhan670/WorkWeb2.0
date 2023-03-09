@@ -55,9 +55,7 @@ function Overview() {
             <div className='overviewtable'>
                 <div className='tableName'>Aktuelle<br />Stunden</div>
                 <div className='tableContent'>
-                    <button onClick={() => dispatch(incremented())}>+</button>
-                    <div id="currentHours" style={getHourColorStyle(hourbalance)}>{hourbalance}</div>
-                    <button onClick={() => dispatch(decremented())}>-</button>
+
                     <div className="hourss"> <ClockIn /></div>
                 </div>
             </div>

@@ -25,7 +25,7 @@
 
 .day:hover {
     display: initial;
-    background-color: var(--txtClr);  
+    background-color: var(--txtClr);
     color: var(--compClr);
 }
 
@@ -82,6 +82,7 @@
     :root {
         --bordRad: 12px;
     }
+
     .day {
         margin: 0px;
         margin-left: 2px;

@@ -43,32 +43,6 @@ const ClockIn = () => {
             }
         }
     };
-    function calculateTotalHours(data) {
-        const totalMilliseconds = data.reduce((acc, curr) => {
-            const [hours, minutes, seconds] = curr.fullTotal_hours.split(':');
-            const milliseconds = (+hours * 60 * 60 + +minutes * 60 + +seconds) * 1000;
-            return acc + milliseconds;
-        }, 0);
-
-        const fullTotalHours = new Date(totalMilliseconds).toISOString().substr(11, 8);
-        return fullTotalHours;
-    }
-
-    const [employeeHours, setEmployeeHours] = useState([]);
-
-    useEffect(() => {
-        const fetchEmployeeHours = async () => {
-            const response = await axios.get(`http://localhost:3000/api/employee_hours/${employeeId}`);
-            setEmployeeHours(response.data);
-        };
-        fetchEmployeeHours();
-    }, [employeeId]);
-
-    const fullTotalHours = calculateTotalHours(employeeHours);
-    console.log(fullTotalHours);
-
-
-
 
 
     return (
@@ -78,12 +52,10 @@ const ClockIn = () => {
                 <button onClick={handleClockIn} disabled={clockInTime && !clockOutTime}>Kommen</button>
                 <button onClick={handleClockOut} disabled={!clockInTime}>Gehen</button>
             </div>
-            <div>
-                Gesamtarbeitszeit: {totalHours}
-            </div>
+
             <div>
 
-                Arbeitszeit heute: {fullTotalHours}
+                Arbeitszeit heute: {totalHours}
             </div>
         </div>
     );

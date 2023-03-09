@@ -1,11 +1,11 @@
 :root {
-  --bgClr: rgb(15, 64, 130);
-  
-  --txtClr: hsl(135, 100%, 50%);
+  --bgClr: rgb(40, 39, 39);
+
+  --txtClr: hsl(0, 0%, 100%);
   --HVtxtClr: calc(var(--txtClr));
-  
+
   --compClr: rgb(51, 51, 51);
-  
+
   --scompClr: rgb(68, 68, 68);
 
 }
