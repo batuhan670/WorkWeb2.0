@@ -22,8 +22,8 @@ input[type="password"] {
 }
 
 button {
-    min-width: 125px;
-    min-height: 30px;
+    min-width: 100px;
+    padding: 2px;
 }
 
 #forceLogButton {
