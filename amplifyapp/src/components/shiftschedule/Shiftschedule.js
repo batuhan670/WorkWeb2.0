@@ -1,17 +1,29 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { daysOfWeekShort as WDNLL, daysOfWeekLong as WDNLS } from "../../constants";
+import { daysOfWeekShort as WDNLS, daysOfWeekLong as WDNLL } from "../../constants";
 import "./ShiftscheduleStyles.css";
 
 let mediaSize = window.matchMedia("(max-width: 700px)");
 
 //DivElement fuer jeden Tag.
 function getDay(dayName, shiftStart, shiftEnd, number) {
+    let start;
+    let end;
+    if ((shiftStart[0] != undefined) && (shiftStart[0] != null)) {
+        start = shiftStart[0].split(":");
+    } else {
+        start = "";
+    }
+    if ((shiftEnd[0] != undefined) && (shiftEnd[0] != null)) {
+        end = shiftEnd[0].split(":");
+    } else {
+        end = "";
+    }
     return <div className="day" key={dayName + number}>
-        <div className="dayName">{dayName[number]}{dayName.map((a) => { return dayName.a })}</div>
-        <div className="dH dHTop">{shiftStart}</div>
-        <div className="dH dHBot">{shiftEnd}</div>
+        <div className="dayName">{dayName[number]}{dayName.map(() => { return dayName.a })}</div>
+        <div className="dH dHTop">{start[0] + ":" + start[1]}</div>
+        <div className="dH dHBot">{end[0] + ":" + end[1]}</div>
     </div>
 };
 
@@ -45,9 +57,8 @@ function Schiftshedule() {
                 // Hole Arbeitszeiten für den Mitarbeiter für den Zeitraum von Montag bis Sonntag
                 const response = await axios.get(`http://localhost:3000/api/employees/${employeeId}/shift_schedule`, {
                     params: {
-                        startTime: monday,
-                        //.toISOString().split("T")[0],
-                        endTime: sunday.toISOString().split("T")[2],
+                        start_time: monday.toISOString().substring(6, 8),
+                        end_time: sunday.toISOString().split("T")[2],
                     },
                 });
                 // Setze den Wochenplan für den Mitarbeiter
