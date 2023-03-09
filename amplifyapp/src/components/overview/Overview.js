@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import "./OverviewStyles.css";
 import { useSelector, useDispatch } from 'react-redux'
-import { incremented, decremented } from "../../stores/counterStore";
+//import { incremented, decremented } from "../../stores/counterStore";
 import { getEmployeeById } from '../../api/api';
 import { setManager } from '../../stores/userStore';
 import ClockIn from '../../data/Employee_hours';
