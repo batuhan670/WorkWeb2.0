@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import "./OverviewStyles.css";
 import { useSelector, useDispatch } from 'react-redux'
 //import { incremented, decremented } from "../../stores/counterStore";
