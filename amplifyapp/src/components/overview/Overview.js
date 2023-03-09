@@ -52,7 +52,7 @@ function Overview() {
             //Delete style, once adjusted.
             style={{ 'marginTop': '150px' }}>
             <div className='overviewtable'>
-                <div className='tableName'>Aktuelle<br />Stunden</div>
+                <div className='tableName'>Stempeluhr</div>
                 <div className='tableContent'>
 
                     <div className="hourss"> <ClockIn /></div>

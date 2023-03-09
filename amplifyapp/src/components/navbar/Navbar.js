@@ -63,7 +63,7 @@ const Navbar = () => {
                 {showUser()}
             </Link>
             <Link>
-                <h1 className="xx">Abteilung</h1>
+
             </Link>
             <div className="navbarAbteilung">
             </div>

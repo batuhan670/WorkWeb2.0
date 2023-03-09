@@ -47,7 +47,7 @@ const ClockIn = () => {
 
     return (
         <div>
-            <h2>Stempeluhr</h2>
+
             <div>
                 <button onClick={handleClockIn} disabled={clockInTime && !clockOutTime}>Kommen</button>
                 <button onClick={handleClockOut} disabled={!clockInTime}>Gehen</button>
