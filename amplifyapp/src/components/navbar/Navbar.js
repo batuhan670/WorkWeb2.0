@@ -4,7 +4,8 @@ import React, { useState } from 'react'
 import { Link } from "react-router-dom"
 import { FaBars, FaTimes } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
-import { clearUser } from "../../stores/userStore";
+import { clearUser, setUser } from "../../stores/userStore";
+
 
 const Navbar = () => {
     const dispatch = useDispatch();
@@ -22,10 +23,21 @@ const Navbar = () => {
     };
     const [submenuActive, setSubmenuActive] = useState(false);
     const activateSubMenu = () => setSubmenuActive(!submenuActive);
-
+    const forcedUser = {
+        id: 1, email: "Mc@Test.net", password: "3",
+        name: "McTest", phone: "0815 4711", department: "IT",
+        position: "Dummy", manager_IDemployees: 2, created_at: "2023-03-03T09:42:45.000Z"
+    }
 
     window.addEventListener("scroll", changeColor);
 
+    function forceLogButton() {
+        if (user == null) {
+            return (
+                <button onClick={() => dispatch(setUser(forcedUser))}>Force Login</button>
+            )
+        }
+    }
     function logoutButton() {
         if (user == null) {
             return <></>
@@ -69,6 +81,7 @@ const Navbar = () => {
                     <Link to="/Kontakte">Kontakt</Link>
                 </li>
                 {logoutButton()}
+                {forceLogButton()}
                 <li className="parentMenu">
                     <a href="#" onClick={activateSubMenu}>Einstellungen</a>
                     <div className={submenuActive ? "submenu active" : "submenu"}>

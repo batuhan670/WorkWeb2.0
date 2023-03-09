@@ -21,16 +21,15 @@ input[type="password"] {
     margin-bottom: 20px;
 }
 
-button[type="submit"] {
-    background-color: #0077FF;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    padding: 10px 20px;
-    font-size: 1.2rem;
-    cursor: pointer;
+button {
+    min-width: 125px;
+    min-height: 30px;
 }
 
-button[type="submit"]:hover {
-    background-color: #005299;
+#forceLogButton {
+    visibility: hidden;
+}
+
+#forceLogButton {
+    visibility: visible;
 }
