@@ -1,6 +1,7 @@
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const session = require('express-session');
+const bcrypt = require('bcryptjs')
 
 const connection = require('../database/db')
 
@@ -19,20 +20,16 @@ module.exports.init = (app) => {
         },
         function (email, password, done) {
             connection.query('SELECT * FROM employees WHERE email = ?', [email], function (error, results) {
-                console.log("xxx1")
                 if (error) {
-
                     return done(error);
-                } console.log("xxx2")
+                }
                 if (!results || results.length === 0) {
                     return done(null, false, { message: 'Incorrect email or password.' });
                 }
                 const user = results[0];
-                console.log("xxx3" + password + " " + user.password)
-                if (password == user.password) {
+                if (bcrypt.compareSync(password, user.password)) {
                     return done(null, user);
                 } else {
-                    console.log("xxx5")
                     return done(null, false, { message: 'Incorrect email or password.' });
                 }
 

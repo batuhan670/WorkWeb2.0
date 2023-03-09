@@ -28,3 +28,7 @@ module.exports.getEmployeeById = async (id) => {
         throw Error("User could not be retrieved...")
     }
 }
+
+module.exports.getIds = async () => {
+
+}

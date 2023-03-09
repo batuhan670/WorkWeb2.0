@@ -3,13 +3,11 @@ import Overview from "../components/overview/Overview.js"
 import Schiftshedule from '../components/shiftschedule/Shiftschedule.js';
 import MiscMenues from '../components/miscmenu/MiscMenu.js';
 import Login from "../logPortal/UserLogin.js";
-import { useSelector, useDispatch } from 'react-redux'
-import { setUser, clearUser } from "../stores/userStore";
+import { useSelector } from 'react-redux'
 import Newsslide from "../components/newsslide/Newsslide.js";
 
 
 function MainPage() {
-    const dispatch = useDispatch();
     const user = useSelector((state) => state.user.user);
     if (user != null)
         return (
@@ -22,11 +20,7 @@ function MainPage() {
         );
     else
         return (
-            <div>
-                <Login />
-                <button onClick={() => dispatch(setUser({}))}>Force Login</button>
-                <button onClick={() => dispatch(clearUser())}>Logout</button>
-            </div>
+            <Login />
         );
 }
 
