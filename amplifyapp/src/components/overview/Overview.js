@@ -1,5 +1,4 @@
 import React from 'react';
-import { useEffect, useState } from 'react';
 import "./OverviewStyles.css";
 import { useSelector, useDispatch } from 'react-redux'
 import { incremented, decremented } from "../../stores/counterStore";

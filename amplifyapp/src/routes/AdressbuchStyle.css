@@ -1,0 +1,20 @@
+.contact {
+    font-size: larger;
+    color: var(--txtClr);
+    background-color: var(--scompClr);
+    border-style: solid;
+    border-color: var(--compClr);
+    border-radius: 5px;
+    transition-duration: 0.5s;
+}
+
+.line {
+    margin: auto;
+    display: inline-block;
+}
+
+.contact:hover {
+    color: var(--compClr);
+    background-color: var(--txtClr);
+    transform-box: border-box;
+}

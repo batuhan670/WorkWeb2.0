@@ -9,6 +9,12 @@ function Login() {
     const [password, setPassword] = useState('');
     const dispatch = useDispatch()
 
+    const forcedUser = {
+        id: 0, email: "Mc@Test.net", password: "3",
+        name: "McTest", phone: "0815 4711", department: "IT",
+        position: "Dummy", manager_IDemployees: 2, created_at: "2023-03-03T09:42:45.000Z"
+    }
+
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
@@ -33,6 +39,7 @@ function Login() {
             </label>
             <br />
             <button type="submit">Login</button>
+            <button onClick={() => dispatch(setUser(forcedUser))}>Force Login</button>
         </form>
     );
 }
