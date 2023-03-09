@@ -17,7 +17,7 @@ import Navbar from "./components/navbar/Navbar";
 import MainPage from "./routes/MainPage";
 import Adressbuch from './routes/Adressbuch.js'
 import DoctorsNote from './routes/DoctorsNote';
-
+import Login from "./logPortal/UserLogin";
 import Footer from './components/footer/Footer';
 
 
@@ -44,6 +44,7 @@ const routes = createBrowserRouter([
       { path: "/", element: <MainPage />, },
       { path: "/addressbuch", element: <Adressbuch />, },
       { path: "/doctorsnote", element: <DoctorsNote />, },
+      { path: "/login", element: <Login />, },
     ]
   }
 ]);
