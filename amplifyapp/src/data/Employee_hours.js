@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useSelector } from 'react-redux';
 import addHours from './AddHours'
@@ -43,6 +43,31 @@ const ClockIn = () => {
             }
         }
     };
+    function calculateTotalHours(data) {
+        const totalMilliseconds = data.reduce((acc, curr) => {
+            const [hours, minutes, seconds] = curr.fullTotal_hours.split(':');
+            const milliseconds = (+hours * 60 * 60 + +minutes * 60 + +seconds) * 1000;
+            return acc + milliseconds;
+        }, 0);
+
+        const fullTotalHours = new Date(totalMilliseconds).toISOString().substr(11, 8);
+        return fullTotalHours;
+    }
+
+    const [employeeHours, setEmployeeHours] = useState([]);
+
+    useEffect(() => {
+        const fetchEmployeeHours = async () => {
+            const response = await axios.get(`http://localhost:3000/api/employee_hours/${employeeId}`);
+            setEmployeeHours(response.data);
+        };
+        fetchEmployeeHours();
+    }, [employeeId]);
+
+    const fullTotalHours = calculateTotalHours(employeeHours);
+    console.log(fullTotalHours);
+
+
 
 
 
@@ -58,7 +83,7 @@ const ClockIn = () => {
             </div>
             <div>
 
-                Arbeitszeit heute: {todayHours}
+                Arbeitszeit heute: {fullTotalHours}
             </div>
         </div>
     );

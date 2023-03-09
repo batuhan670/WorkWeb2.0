@@ -20,7 +20,7 @@ import PWaendern from './routes/PWaendern';
 import Urlaub from './routes/Urlaub';
 import DoctorsNote from './routes/DoctorsNote';
 import Login from "./logPortal/UserLogin";
-import EmployeeScheduleBanner from "./components/Schichtplan/ShiftScheduleBanner";
+
 
 import Footer from './components/footer/Footer';
 
@@ -51,7 +51,7 @@ const routes = createBrowserRouter([
       { path: "/urlaub", element: <Urlaub />, },
       { path: "/doctorsnote", element: <DoctorsNote />, },
       { path: "/login", element: <Login />, },
-      { path: "/schedule_planner", element: <EmployeeScheduleBanner />, },
+
     ]
   }
 ]);
