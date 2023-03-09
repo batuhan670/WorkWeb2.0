@@ -16,7 +16,7 @@ function MainPage() {
             <div>
                 <Overview />
                 <Schiftshedule />
-                <Newsslide />
+
                 <MiscMenues />
             </div>
         );

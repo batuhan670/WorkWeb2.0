@@ -18,16 +18,20 @@ export const ContactUs = () => {
             });
     };
 
-
-
     return (
         <form ref={form} onSubmit={sendEmail}>
-            <label>Name</label>
-            <input type="text" name='from_user' value={user.payload.name} />
-            <label>Email</label>
-            <input type="email" name="user_email" value={user.payload.email} />
-            <label>Message</label>
-            <textarea name="message" />
+            <label>
+                <div className="label-text">Name</div>
+                <input type="text" name="from_user" value={user.payload.name} style={{ width: '100%' }} />
+            </label>
+            <label>
+                <div className="label-text">Email</div>
+                <input type="text" name="user_email" value={user.payload.email} style={{ width: '100%' }} />
+            </label>
+            <label>
+                <div className="label-text">Message</div>
+                <textarea name="message" style={{ width: '100%', height: '200px' }} />
+            </label>
             <input type="submit" value="Send" />
         </form>
     );

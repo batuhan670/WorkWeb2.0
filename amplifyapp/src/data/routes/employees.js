@@ -39,6 +39,7 @@ router.post('/', (req, res) => {
         if (error) {
             console.error(error);
             res.status(500).send('Error saving data to database');
+            console.log(req.body)
             return;
         }
 
