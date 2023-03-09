@@ -10,12 +10,12 @@ let mediaSize = window.matchMedia("(max-width: 700px)");
 function getDay(dayName, shiftStart, shiftEnd, number) {
     let start;
     let end;
-    if ((shiftStart[0] != undefined) && (shiftStart[0] != null)) {
+    if ((shiftStart[0] !== undefined) && (shiftStart[0] !== null)) {
         start = shiftStart[0].split(":");
     } else {
         start = "";
     }
-    if ((shiftEnd[0] != undefined) && (shiftEnd[0] != null)) {
+    if ((shiftEnd[0] !== undefined) && (shiftEnd[0] !== null)) {
         end = shiftEnd[0].split(":");
     } else {
         end = "";
